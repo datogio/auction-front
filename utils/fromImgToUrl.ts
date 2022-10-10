@@ -2,6 +2,7 @@ import { API_URL } from './urls';
 
 const fromImgToUrl = (image: image.Response) => {
   if (!image) {
+    // return
     return '';
   }
 
