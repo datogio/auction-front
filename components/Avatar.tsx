@@ -15,6 +15,7 @@ const Avatar = ({ firstName, lastName, image }: IAvatar) => {
           src={fromImgToUrl(image)}
           layout="fill"
           objectFit="cover"
+          alt="avatar image"
           className="rounded-full"
         />
       ) : (
