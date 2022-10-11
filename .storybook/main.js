@@ -26,7 +26,7 @@ module.exports = {
     builder: '@storybook/builder-webpack5',
   },
   webpackFinal: (config) => {
-    config.resolve.alias['../utils/fromImgToUrl'] = require.resolve(
+    config.resolve.alias['../../utils/fromImgToUrl'] = require.resolve(
       '../__mocks__/fromImgToUrl.ts'
     );
     return config;
