@@ -5,7 +5,7 @@ interface IAvatarWithName {
 }
 
 const AvatarWithName = ({ children }: IAvatarWithName) => {
-  return <div>{children}</div>;
+  return <div className="flex flex-col items-center space-y-2">{children}</div>;
 };
 
 export default AvatarWithName;

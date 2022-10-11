@@ -1,4 +1,4 @@
-import type { IAvatar } from './avatar/Avatar';
+import type { IAvatar } from '../avatar/Avatar';
 
 export interface IName {
   name: IAvatar['firstName'] | IAvatar['lastName'];

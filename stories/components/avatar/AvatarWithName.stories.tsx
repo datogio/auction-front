@@ -1,6 +1,8 @@
 import {
   AvatarWithName as AvatarWithNameComponent,
   Avatar,
+  FirstAndLastName,
+  Name,
 } from '../../../components';
 import type { IAvatar } from '../../../components/avatar/Avatar';
 
@@ -17,5 +19,9 @@ const avatarArgs: IAvatar = {
 export const AvatarWithName = () => (
   <AvatarWithNameComponent>
     <Avatar firstName={avatarArgs.firstName} lastName={avatarArgs.lastName} />
+    <FirstAndLastName>
+      <Name name={avatarArgs.firstName} />
+      <Name name={avatarArgs.lastName} />
+    </FirstAndLastName>
   </AvatarWithNameComponent>
 );

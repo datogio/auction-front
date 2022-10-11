@@ -1,5 +1,5 @@
 import { Name as FirstNameComponent } from '../../../components';
-import type { IName } from '../../../components/Name';
+import type { IName } from '../../../components/name/Name';
 
 export default {
   title: 'Components/Name',
