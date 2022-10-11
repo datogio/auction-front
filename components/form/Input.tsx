@@ -2,12 +2,13 @@ import { FiSearch } from 'react-icons/fi';
 import type { ReactNode } from 'react';
 
 export interface IInput {
-  icon: 'SEARCH';
+  icon: 'SEARCH' | 'NONE';
   placeholder: string;
 }
 
-const ICON_MAPS: Record<IInput['icon'], ReactNode> = {
+const ICON_MAPS: Record<IInput['icon'], ReactNode | null> = {
   ['SEARCH']: <FiSearch className="text-3xl" />,
+  ['NONE']: null,
 };
 
 const Input = ({ icon, placeholder }: IInput) => {
