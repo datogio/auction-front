@@ -1,13 +1,11 @@
-import { FirstName as FirstNameComponent } from '../../../components';
-import type { IFirstName } from '../../../components/name/FirstName';
+import { Name as FirstNameComponent } from '../../../components';
+import type { IName } from '../../../components/Name';
 
 export default {
   title: 'Components/Name',
   component: FirstNameComponent,
 };
 
-export const FirstName = (args: IFirstName) => (
-  <FirstNameComponent firstName={args.firstName} />
-);
+export const Name = (args: IName) => <FirstNameComponent name={args.name} />;
 
-FirstName.args = { firstName: 'David' };
+Name.args = { name: 'David' };
