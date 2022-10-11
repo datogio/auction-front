@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import fromImgToUrl from '../utils/fromImgToUrl';
+import { returnCapitalizedFirstLetter } from '../utils/formating';
 
 export interface IAvatar {
   firstName: string;
@@ -22,14 +23,6 @@ const COLOR_MAPS: Record<number, string> = COLORS.reduce(
   {}
 );
 
-const containsNonLatinCodepoints = (s: string): string => {
-  const contains = /[^\u0000-\u00ff]/.test(s);
-
-  if (!contains) return s[0];
-
-  return s[0].toLocaleLowerCase();
-};
-
 const Avatar = ({ firstName, lastName, image }: IAvatar) => {
   return (
     <div className="relative w-20 h-20">
@@ -47,8 +40,8 @@ const Avatar = ({ firstName, lastName, image }: IAvatar) => {
             COLOR_MAPS[Math.floor(Math.random() * COLORS.length)]
           } w-[100%] h-[100%] rounded-full flex items-center justify-center text-white text-2xl`}
         >
-          {containsNonLatinCodepoints(firstName)}
-          {containsNonLatinCodepoints(lastName)}
+          {returnCapitalizedFirstLetter(firstName)}
+          {returnCapitalizedFirstLetter(lastName)}
         </div>
       )}
     </div>
