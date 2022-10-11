@@ -5,7 +5,7 @@ export interface IName {
 }
 
 const Name = ({ name }: IName) => {
-  return <div>{name}</div>;
+  return <div className="text-lg font-bold">{name}</div>;
 };
 
 export default Name;

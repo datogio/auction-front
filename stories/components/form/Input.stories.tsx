@@ -1,4 +1,5 @@
 import { Input as InputComponent } from '../../../components';
+import { Container } from '../../../components/layouts';
 import type { IInput } from '../../../components/form/Input';
 
 export default {
@@ -7,7 +8,9 @@ export default {
 };
 
 export const Input = (args: IInput) => (
-  <InputComponent icon={args.icon} placeholder={args.placeholder} />
+  <Container padding="SOLID">
+    <InputComponent icon={args.icon} placeholder={args.placeholder} />
+  </Container>
 );
 
 const args: IInput = {

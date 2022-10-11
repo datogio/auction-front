@@ -15,7 +15,7 @@ const Input = ({ icon, placeholder }: IInput) => {
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
-      className="flex items-center bg-gray-700 text-white py-3 px-4 rounded-xl space-x-3"
+      className="flex items-center bg-gray-700 text-white py-3 px-4 rounded-xl space-x-3 w-[100%]"
     >
       {ICON_MAPS[icon]}
       <input

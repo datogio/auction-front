@@ -1,4 +1,5 @@
 import { Avatar as AvatarComponent } from '../../../components';
+import { Container } from '../../../components/layouts';
 import type { IAvatar } from '../../../components/avatar/Avatar';
 
 export default {
@@ -7,13 +8,13 @@ export default {
 };
 
 export const Avatar = (args: IAvatar) => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
+  <Container padding="SOLID">
     <AvatarComponent
       firstName={args.firstName}
       lastName={args.lastName}
       image={args.image}
     />
-  </div>
+  </Container>
 );
 
 Avatar.args = {

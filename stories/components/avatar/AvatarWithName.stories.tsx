@@ -4,6 +4,7 @@ import {
   FirstAndLastName,
   Name,
 } from '../../../components';
+import { Container } from '../../../components/layouts';
 import type { IAvatar } from '../../../components/avatar/Avatar';
 
 export default {
@@ -17,11 +18,12 @@ const avatarArgs: IAvatar = {
 };
 
 export const AvatarWithName = () => (
-  <AvatarWithNameComponent>
-    <Avatar firstName={avatarArgs.firstName} lastName={avatarArgs.lastName} />
-    <FirstAndLastName>
-      <Name name={avatarArgs.firstName} />
-      <Name name={avatarArgs.lastName} />
-    </FirstAndLastName>
-  </AvatarWithNameComponent>
+  <Container padding="SOLID">
+    <AvatarWithNameComponent>
+      <Avatar firstName={avatarArgs.firstName} lastName={avatarArgs.lastName} />
+      <FirstAndLastName>
+        <Name name={avatarArgs.firstName} />
+      </FirstAndLastName>
+    </AvatarWithNameComponent>
+  </Container>
 );
