@@ -15,7 +15,7 @@ export const Avatar = (args: IAvatar) => (
 );
 
 Avatar.args = {
-  firstName: 'David',
-  lastName: 'Giorgadze',
+  firstName: 'Random ',
+  lastName: 'Woman',
   image: { url: 'http://localhost:3000/cover-image.jpeg' },
 };
