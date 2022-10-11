@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import fromImgToUrl from '../utils/fromImgToUrl';
-import { returnCapitalizedFirstLetter } from '../utils/formating';
+import fromImgToUrl from '../../utils/fromImgToUrl';
+import { returnCapitalizedFirstLetter } from '../../utils/formating';
 
 export interface IAvatar {
   firstName: string;
