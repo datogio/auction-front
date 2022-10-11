@@ -7,11 +7,13 @@ export default {
 };
 
 export const Avatar = (args: IAvatar) => (
-  <AvatarComponent
-    firstName={args.firstName}
-    lastName={args.lastName}
-    image={args.image}
-  />
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <AvatarComponent
+      firstName={args.firstName}
+      lastName={args.lastName}
+      image={args.image}
+    />
+  </div>
 );
 
 Avatar.args = {
