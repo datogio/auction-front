@@ -1,5 +1,5 @@
-import { Avatar as AvatarComponent } from '../../components';
-import type { IAvatar } from '../../components/avatar/Avatar';
+import { Avatar as AvatarComponent } from '../../../components';
+import type { IAvatar } from '../../../components/avatar/Avatar';
 
 export default {
   title: 'Components/Profile',
