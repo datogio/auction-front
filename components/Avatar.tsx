@@ -23,7 +23,7 @@ const COLOR_MAPS: Record<number, string> = COLORS.reduce(
 );
 
 const containsNonLatinCodepoints = (s: string): boolean => {
-  return s ? /[^\u0000-\u00ff]/.test(s) : false;
+  return /[^\u0000-\u00ff]/.test(s);
 };
 
 const Avatar = ({ firstName, lastName, image }: IAvatar) => {
