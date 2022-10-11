@@ -22,8 +22,12 @@ const COLOR_MAPS: Record<number, string> = COLORS.reduce(
   {}
 );
 
-const containsNonLatinCodepoints = (s: string): boolean => {
-  return /[^\u0000-\u00ff]/.test(s);
+const containsNonLatinCodepoints = (s: string): string => {
+  const contains = /[^\u0000-\u00ff]/.test(s);
+
+  if (!contains) return s[0];
+
+  return s[0].toLocaleLowerCase();
 };
 
 const Avatar = ({ firstName, lastName, image }: IAvatar) => {
@@ -43,12 +47,8 @@ const Avatar = ({ firstName, lastName, image }: IAvatar) => {
             COLOR_MAPS[Math.floor(Math.random() * COLORS.length)]
           } w-[100%] h-[100%] rounded-full flex items-center justify-center text-white text-2xl`}
         >
-          {containsNonLatinCodepoints(firstName[0])
-            ? firstName[0]
-            : firstName[0].toUpperCase()}
-          {containsNonLatinCodepoints(lastName[0])
-            ? lastName[0]
-            : lastName[0].toUpperCase()}
+          {containsNonLatinCodepoints(firstName)}
+          {containsNonLatinCodepoints(lastName)}
         </div>
       )}
     </div>
