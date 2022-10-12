@@ -7,7 +7,12 @@ export default {
 };
 
 export const Button = (args: IButton) => (
-  <ButtonComponent value={args.value} onClick={args.onClick} />
+  <ButtonComponent value={args.value} size={args.size} onClick={args.onClick} />
 );
 
-Button.args = { value: 'Follow', onClick: () => {} };
+const buttonArgs: IButton = {
+  value: 'Follow',
+  size: 'SMALL',
+  onClick: () => {},
+};
+Button.args = buttonArgs;
