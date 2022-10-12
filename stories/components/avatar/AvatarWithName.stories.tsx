@@ -18,7 +18,7 @@ const avatarArgs: IAvatar = {
 };
 
 export const AvatarWithName = () => (
-  <Container padding="SOLID">
+  <Container padding="SOLID" color="BLACK">
     <AvatarWithNameComponent>
       <Avatar firstName={avatarArgs.firstName} lastName={avatarArgs.lastName} />
       <FirstAndLastName>

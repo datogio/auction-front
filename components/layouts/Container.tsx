@@ -15,7 +15,7 @@ const PADDING_MAPS: Record<IContainer['padding'], string> = {
 
 const COLOR_MAPS: Record<IContainer['color'], string> = {
   ['BLACK']: 'bg-[#191A1D]',
-  ['GRAY']: 'bg-[#9597A1]',
+  ['GRAY']: 'bg-gray-700',
 };
 
 const Container = ({ color, padding, children }: IContainer) => {
