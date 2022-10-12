@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export interface IInput {
   icon: 'SEARCH' | 'NONE';
   placeholder: string;
+  children?: ReactNode;
 }
 
 const ICON_MAPS: Record<IInput['icon'], ReactNode | null> = {
@@ -11,7 +12,7 @@ const ICON_MAPS: Record<IInput['icon'], ReactNode | null> = {
   ['NONE']: null,
 };
 
-const Input = ({ icon, placeholder }: IInput) => {
+const Input = ({ icon, placeholder, children }: IInput) => {
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
@@ -20,8 +21,9 @@ const Input = ({ icon, placeholder }: IInput) => {
       {ICON_MAPS[icon]}
       <input
         placeholder={placeholder}
-        className="w-[100%] bg-transparent outline-none placeholder-gray-200 text-xl"
+        className="w-[100%] bg-transparent placeholder-gray-200 text-xl"
       />
+      {children}
     </form>
   );
 };

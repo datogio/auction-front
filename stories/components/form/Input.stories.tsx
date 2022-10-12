@@ -1,4 +1,4 @@
-import { Input as InputComponent } from '../../../components';
+import { Input as InputComponent, Button } from '../../../components';
 import { Container } from '../../../components/layouts';
 import type { IInput } from '../../../components/form/Input';
 
@@ -9,7 +9,9 @@ export default {
 
 export const Input = (args: IInput) => (
   <Container padding="SOLID" color="BLACK">
-    <InputComponent icon={args.icon} placeholder={args.placeholder} />
+    <InputComponent icon={args.icon} placeholder={args.placeholder}>
+      <Button value="Find" onClick={() => {}} size="SMALL" />
+    </InputComponent>
   </Container>
 );
 
