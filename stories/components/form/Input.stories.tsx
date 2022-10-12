@@ -9,12 +9,19 @@ export default {
 
 export const Input = (args: IInput) => (
   <Container padding="SOLID" color="BLACK">
-    <InputComponent icon={args.icon} placeholder={args.placeholder} />
+    <InputComponent
+      icon={args.icon}
+      value={args.value}
+      onChange={args.onChange}
+      placeholder={args.placeholder}
+    />
   </Container>
 );
 
 const args: IInput = {
   icon: 'NONE',
+  value: '',
+  onChange: () => {},
   placeholder: 'Search',
 };
 Input.args = args;

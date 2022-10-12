@@ -9,10 +9,21 @@ export default {
 
 export const InputWithButton = (args: IInput) => (
   <Container color="BLACK" padding="SOLID">
-    <Input icon={args.icon} placeholder={args.placeholder}>
+    <Input
+      icon={args.icon}
+      value=""
+      onChange={() => {}}
+      placeholder={args.placeholder}
+    >
       <Button value="Find" size="SMALL" onClick={() => {}} />
     </Input>
   </Container>
 );
 
-InputWithButton.args = { icon: 'SEARCH', placeholder: 'Search' };
+const inputArgs: IInput = {
+  icon: 'SEARCH',
+  value: '',
+  onChange: () => {},
+  placeholder: 'Search',
+};
+InputWithButton.args = inputArgs;

@@ -1,8 +1,10 @@
 import { FiSearch } from 'react-icons/fi';
-import type { ReactNode } from 'react';
+import type { ChangeEventHandler, ReactNode } from 'react';
 
 export interface IInput {
   icon: 'SEARCH' | 'NONE';
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
   children?: ReactNode;
 }
@@ -12,7 +14,7 @@ const ICON_MAPS: Record<IInput['icon'], ReactNode | null> = {
   ['NONE']: null,
 };
 
-const Input = ({ icon, placeholder, children }: IInput) => {
+const Input = ({ icon, value, onChange, placeholder, children }: IInput) => {
   return (
     <form
       onSubmit={(event) => event.preventDefault()}
@@ -21,6 +23,8 @@ const Input = ({ icon, placeholder, children }: IInput) => {
       {ICON_MAPS[icon]}
       <input
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-[100%] bg-transparent placeholder-gray-200 text-xl"
       />
       {children}
