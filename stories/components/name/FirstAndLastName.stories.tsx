@@ -1,25 +1,16 @@
-import {
-  FirstAndLastName as FirstAndLastNameComponent,
-  Name,
-} from '../../../components';
-import type { IAvatar } from '../../../components/avatar/Avatar';
+import { FirstAndLastName as FirstAndLastNameComponent } from '../../../components';
+import type { IFirstAndLastName } from '../../../components/name/FirstAndLastName';
 
 export default {
   title: 'Components/Name',
   component: FirstAndLastNameComponent,
 };
 
-const firstAndLastNameArgs: {
-  firstName: IAvatar['firstName'];
-  lastName: IAvatar['lastName'];
-} = {
-  firstName: 'David',
-  lastName: 'Giorgadze',
-};
-
-export const FirstAndLastName = () => (
-  <FirstAndLastNameComponent>
-    <Name name={firstAndLastNameArgs.firstName} />
-    <Name name={firstAndLastNameArgs.lastName} />
-  </FirstAndLastNameComponent>
+export const FirstAndLastName = (args: IFirstAndLastName) => (
+  <FirstAndLastNameComponent
+    firstName={args.firstName}
+    lastName={args.lastName}
+  />
 );
+
+FirstAndLastName.args = { firstName: 'David', lastName: 'Giorgadze' };

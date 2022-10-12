@@ -1,11 +1,17 @@
-import { ReactNode } from 'react';
+import { Name } from '../../components';
 
 export interface IFirstAndLastName {
-  children: ReactNode;
+  firstName: string;
+  lastName: string;
 }
 
-const FirstAndLastName = ({ children }: IFirstAndLastName) => {
-  return <div className="flex space-x-1">{children}</div>;
+const FirstAndLastName = ({ firstName, lastName }: IFirstAndLastName) => {
+  return (
+    <div className="flex space-x-1">
+      <Name name={firstName} />
+      <Name name={lastName} />
+    </div>
+  );
 };
 
 export default FirstAndLastName;
