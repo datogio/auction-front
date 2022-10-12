@@ -7,10 +7,12 @@ export default {
   component: Input,
 };
 
-export const InputWithIconAndButton = (args: IInput) => (
+export const InputWithButton = (args: IInput) => (
   <Container color="BLACK" padding="SOLID">
-    <Input icon="SEARCH" placeholder="Search">
+    <Input icon={args.icon} placeholder={args.placeholder}>
       <Button value="Find" size="SMALL" onClick={() => {}} />
     </Input>
   </Container>
 );
+
+InputWithButton.args = { icon: 'SEARCH', placeholder: 'Search' };
