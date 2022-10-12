@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 export interface IContainer {
+  color: 'BLACK' | 'GRAY';
   padding: 'SMALL' | 'MEDIUM' | 'SOLID' | 'NONE';
   children: ReactNode;
 }
@@ -12,10 +13,15 @@ const PADDING_MAPS: Record<IContainer['padding'], string> = {
   ['NONE']: '',
 };
 
-const Container = ({ padding, children }: IContainer) => {
+const COLOR_MAPS: Record<IContainer['color'], string> = {
+  ['BLACK']: 'bg-[#191A1D]',
+  ['GRAY']: 'bg-[#9597A1]',
+};
+
+const Container = ({ color, padding, children }: IContainer) => {
   return (
     <div
-      className={`${PADDING_MAPS[padding]} flex flex-col items-center bg-[#191A1D] text-white rounded-2xl shadow-lg shadow-[#191A1D]`}
+      className={`${PADDING_MAPS[padding]} ${COLOR_MAPS[color]} w-[100%] flex flex-col items-center text-white rounded-2xl shadow-lg shadow-[#191A1D]`}
     >
       {children}
     </div>

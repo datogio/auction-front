@@ -7,7 +7,11 @@ export default {
 };
 
 export const Container = (args: IContainer) => (
-  <ContainerLayout padding={args.padding}>Container</ContainerLayout>
+  <ContainerLayout color={args.color} padding={args.padding}>
+    <ContainerLayout color="GRAY" padding="MEDIUM">
+      Container
+    </ContainerLayout>
+  </ContainerLayout>
 );
 
-Container.args = { padding: 'SOLID' };
+Container.args = { color: 'BLACK', padding: 'SOLID' };
