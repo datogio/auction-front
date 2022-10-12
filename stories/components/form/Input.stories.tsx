@@ -8,7 +8,7 @@ export default {
 };
 
 export const Input = (args: IInput) => (
-  <Container padding="SOLID">
+  <Container padding="SOLID" color="BLACK">
     <InputComponent icon={args.icon} placeholder={args.placeholder} />
   </Container>
 );

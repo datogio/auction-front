@@ -8,7 +8,7 @@ export default {
 };
 
 export const Avatar = (args: IAvatar) => (
-  <Container padding="SOLID">
+  <Container padding="SOLID" color="BLACK">
     <AvatarComponent
       firstName={args.firstName}
       lastName={args.lastName}
