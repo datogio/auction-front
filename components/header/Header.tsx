@@ -1,18 +1,16 @@
 import { FaTimes } from 'react-icons/fa';
-import { IoIosArrowRoundBack } from 'react-icons/io';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import type { MouseEventHandler, ReactNode } from 'react';
 
 export interface IHeader {
-  title: 'BACK' | string;
+  title: ReactNode;
   titleIcon: 'CLOSE' | 'DOTS';
-  firstOnClick?: MouseEventHandler<SVGElement>;
-  secondOnClick: MouseEventHandler<SVGElement>;
+  onIconClick: MouseEventHandler<SVGElement>;
 }
 
 const SECOND_ICON_MAPS: Record<
   IHeader['titleIcon'],
-  (clickHandler: IHeader['secondOnClick']) => ReactNode
+  (clickHandler: IHeader['onIconClick']) => ReactNode
 > = {
   ['CLOSE']: (clickHandler) => (
     <FaTimes className="cursor-pointer" onClick={clickHandler} />
@@ -25,17 +23,11 @@ const SECOND_ICON_MAPS: Record<
   ),
 };
 
-const Header = ({ title, titleIcon, secondOnClick }: IHeader) => {
+const Header = ({ title, titleIcon, onIconClick }: IHeader) => {
   return (
     <div className="flex justify-between items-center w-[100%]">
-      <div>
-        {title === 'BACK' ? (
-          <IoIosArrowRoundBack className="text-2xl cursor-pointer" />
-        ) : (
-          title
-        )}
-      </div>
-      {SECOND_ICON_MAPS[titleIcon](secondOnClick)}
+      <div>{title}</div>
+      {SECOND_ICON_MAPS[titleIcon](onIconClick)}
     </div>
   );
 };

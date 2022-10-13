@@ -12,14 +12,14 @@ export const Header = (args: IHeader) => (
     <HeaderComponent
       title={args.title}
       titleIcon={args.titleIcon}
-      secondOnClick={args.secondOnClick}
+      onIconClick={args.onIconClick}
     />
   </Container>
 );
 
 const headerArgs: IHeader = {
-  title: 'BACK',
+  title: 'Header Title (supports svg)',
   titleIcon: 'DOTS',
-  secondOnClick: () => alert('clicked'),
+  onIconClick: () => alert('clicked'),
 };
 Header.args = headerArgs;
