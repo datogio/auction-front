@@ -2,7 +2,7 @@ import type { MouseEventHandler } from 'react';
 
 export interface IButton {
   value: string;
-  size: 'SMALL' | 'MEDIUM' | 'LARGE';
+  size: 'SMALL' | 'MEDIUM' | 'LARGE' | 'FILL';
   onClick: MouseEventHandler<HTMLInputElement>;
 }
 
@@ -10,6 +10,7 @@ const SIZE_MAPS: Record<IButton['size'], string> = {
   ['SMALL']: 'w-24',
   ['MEDIUM']: 'w-32',
   ['LARGE']: 'w-44',
+  ['FILL']: 'w-[100%]',
 };
 
 const Button = ({ value, size, onClick }: IButton) => {
