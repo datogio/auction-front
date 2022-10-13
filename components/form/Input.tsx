@@ -10,7 +10,7 @@ export interface IInput {
 }
 
 const ICON_MAPS: Record<IInput['icon'], ReactNode | null> = {
-  ['SEARCH']: <FiSearch className="text-3xl" />,
+  ['SEARCH']: <FiSearch className="text-2xl" />,
   ['NONE']: null,
 };
 
