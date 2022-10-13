@@ -11,15 +11,15 @@ export const Header = (args: IHeader) => (
   <Container color="BLACK" padding="SOLID">
     <HeaderComponent
       title={args.title}
-      icon={args.icon}
-      onClick={args.onClick}
+      titleIcon={args.titleIcon}
+      secondOnClick={args.secondOnClick}
     />
   </Container>
 );
 
 const headerArgs: IHeader = {
-  title: 'Header Title',
-  icon: 'CLOSE',
-  onClick: () => alert('clicked'),
+  title: 'BACK',
+  titleIcon: 'DOTS',
+  secondOnClick: () => alert('clicked'),
 };
 Header.args = headerArgs;
