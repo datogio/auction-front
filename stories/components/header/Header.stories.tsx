@@ -11,7 +11,7 @@ export const Header = (args: IHeader) => (
   <Container color="BLACK" padding="SOLID">
     <HeaderComponent
       title={args.title}
-      titleIcon={args.titleIcon}
+      icon={args.icon}
       onIconClick={args.onIconClick}
     />
   </Container>
@@ -19,7 +19,7 @@ export const Header = (args: IHeader) => (
 
 const headerArgs: IHeader = {
   title: 'Header Title (supports svg)',
-  titleIcon: 'DOTS',
+  icon: 'DOTS',
   onIconClick: () => alert('clicked'),
 };
 Header.args = headerArgs;
