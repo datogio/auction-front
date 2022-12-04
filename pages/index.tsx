@@ -1,15 +1,12 @@
-import Head from 'next/head';
+import { PageLayout } from '../layouts';
+
 import type { NextPage } from 'next';
 
 const HomePage: NextPage = () => {
   return (
-    <div>
-      <Head>
-        <title>Home Page</title>
-        <meta name="description" content="Home page description" />
-      </Head>
-      <main>Page Main Section</main>
-    </div>
+    <PageLayout title="Home Page" description="Home page description">
+      <div>Hello World</div>
+    </PageLayout>
   );
 };
 
