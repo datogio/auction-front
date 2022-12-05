@@ -3,17 +3,17 @@ import Head from 'next/head';
 import type { ReactNode } from 'react';
 
 interface PageLayoutProps {
-  title: string;
-  description: string;
+  pageTitle: string;
+  pageDescription: string;
   children: ReactNode;
 }
 
-const PageLayout = ({ title, description, children }: PageLayoutProps) => {
+const PageLayout = ({ pageTitle, pageDescription, children }: PageLayoutProps) => {
   return (
     <div>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
       </Head>
 
       <header>Header</header>
