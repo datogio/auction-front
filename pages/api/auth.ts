@@ -1,3 +1,4 @@
+import { setToken } from '../../services/cookies';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const headers = new Headers();
@@ -19,6 +20,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         const user = await resp.json();
+
+        setToken(req, res, user.jwt);
 
         return res.status(200).json(user);
       })
