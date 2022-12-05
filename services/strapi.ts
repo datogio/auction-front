@@ -21,6 +21,29 @@ export const signOut = () => {
   );
 };
 
+export const signUp = (identifier: string, password: string) => {
+  return new Promise(
+    (
+      resolve: (message: 'success') => void,
+      reject: (message: 'Email already taken') => void
+    ) => {
+      fetch(`http://localhost:3000/api/auth`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ identifier, password, type: 'sign-up' }),
+      })
+        .then((resp) => {
+          if (!resp.ok) {
+            reject('Email already taken');
+          }
+
+          resolve('success');
+        })
+        .catch(() => reject('Email already taken'));
+    }
+  );
+};
+
 export const signIn = (identifier: string, password: string) => {
   return new Promise(
     (

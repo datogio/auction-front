@@ -12,6 +12,19 @@ export const signOut = createAsyncThunk(
   }
 );
 
+export const signUp = createAsyncThunk(
+  'user/signUp',
+  async (
+    { identifier, password }: { identifier: string; password: string },
+    { dispatch }
+  ) => {
+    strapi
+      .signUp(identifier, password)
+      .then(() => dispatch(errorActions.set(null)))
+      .catch((err) => dispatch(errorActions.set(err)));
+  }
+);
+
 export const signIn = createAsyncThunk(
   'user/signIn',
   async (

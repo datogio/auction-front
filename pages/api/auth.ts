@@ -14,6 +14,29 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(200).json({ message: 'success' });
   }
 
+  type === 'sign-up' &&
+    (await fetch(`http://localhost:1337/api/auth/local/register`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        username: identifier,
+        email: identifier,
+        password,
+      }),
+    })
+      .then(async (resp) => {
+        if (!resp.ok) {
+          throw Error(resp.statusText);
+        }
+
+        const user = await resp.json();
+
+        setToken(req, res, user.jwt);
+
+        return res.status(200).json({ message: 'success' });
+      })
+      .catch((err) => res.status(400).json(err)));
+
   type === 'sign-in' &&
     (await fetch(`http://localhost:1337/api/auth/local`, {
       method: 'POST',
