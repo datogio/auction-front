@@ -8,6 +8,12 @@ headers.set('Content-Type', 'application/json');
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { identifier, password, type } = req.body;
 
+  if (type === 'sign-out') {
+    setToken(req, res, '');
+
+    return res.status(200).json({ message: 'success' });
+  }
+
   type === 'sign-in' &&
     (await fetch(`http://localhost:1337/api/auth/local`, {
       method: 'POST',
@@ -23,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         setToken(req, res, user.jwt);
 
-        return res.status(200).json(user);
+        return res.status(200).json({ message: 'success' });
       })
       .catch((err) => res.status(400).json(err)));
 };

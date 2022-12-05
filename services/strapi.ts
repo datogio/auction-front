@@ -2,6 +2,25 @@ const headers = new Headers();
 headers.set('Accept', 'application/json');
 headers.set('Content-Type', 'application/json');
 
+export const signOut = () => {
+  return new Promise(
+    (
+      resolve: (message: 'success') => void,
+      reject: (message: 'Problem signing user out') => void
+    ) => {
+      fetch('http://localhost:3000/api/auth', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ type: 'sign-out' }),
+      })
+        .then(() => {
+          resolve('success');
+        })
+        .catch(() => reject('Problem signing user out'));
+    }
+  );
+};
+
 export const signIn = (identifier: string, password: string) => {
   return new Promise(
     (
