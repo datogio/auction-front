@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     })
       .then(async (resp) => {
         if (!resp.ok) {
-          throw Error('Invalid email or password');
+          throw Error(resp.statusText);
         }
 
         const user = await resp.json();
@@ -23,12 +23,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         return res.status(200).json(user);
       })
       .catch((err) => res.status(400).json(err)));
-
-  res
-    .status(400)
-    .json({
-      message: 'Please provide auth type: (sign-in, sign-up or sign-out)',
-    });
 };
 
 export default handler;

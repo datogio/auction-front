@@ -14,7 +14,9 @@ export const signIn = (identifier: string, password: string) => {
         body: JSON.stringify({ identifier, password, type: 'sign-in' }),
       })
         .then((resp) => {
-          if (!resp.ok) reject('Ivalid email or password');
+          if (!resp.ok) {
+            reject('Ivalid email or password');
+          }
 
           resolve('success');
         })
