@@ -6,3 +6,5 @@ First, run the development server:
 yarn
 yarn dev
 ```
+
+Happy coding...
