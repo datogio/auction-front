@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Auth, LeftAside, Overlay } from '../components';
 import { FaTimes } from 'react-icons/fa';
 import type { ReactNode } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -35,19 +36,21 @@ const PageLayout = ({
 
         <aside className="paddings col-span-3 bg-white">Right Aside</aside>
       </div>
-      {isAuthActive && (
-        <Overlay>
-          <div className="flex justify-end p-5">
-            <FaTimes
-              className="text-white text-4xl cursor-pointer"
-              onClick={handleAuthActivation}
-            />
-          </div>
-          <div className="h-[80%] flex justify-center items-center">
-            <Auth />
-          </div>
-        </Overlay>
-      )}
+      <AnimatePresence>
+        {isAuthActive && (
+          <Overlay>
+            <div className="flex justify-end p-5">
+              <FaTimes
+                className="text-white text-4xl cursor-pointer"
+                onClick={handleAuthActivation}
+              />
+            </div>
+            <div className="h-[80%] flex justify-center items-center">
+              <Auth />
+            </div>
+          </Overlay>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

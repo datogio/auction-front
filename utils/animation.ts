@@ -5,4 +5,7 @@ export const overlayEntry = {
   animate: {
     opacity: 1,
   },
+  exit: {
+    opacity: 0,
+  },
 };
