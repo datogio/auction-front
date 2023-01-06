@@ -9,6 +9,7 @@ export default {
 export const NavItem = (args: NavItemProps) => <NavItemComponent {...args} />;
 
 const args: NavItemProps = {
+  href: '/',
   icon: 'home',
   value: 'Home',
   active: true,
