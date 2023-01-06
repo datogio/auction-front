@@ -34,6 +34,10 @@ const SignUp = (props: SignUpProps) => {
     if (!inputs.password) return alert('Password is required');
     if (!inputs.confirmPassword)
       return alert('Password confirmation is required');
+    if (inputs.email !== inputs.confirmEmail)
+      return alert("Emails don't match");
+    if (inputs.password !== inputs.confirmPassword)
+      return alert("Passwords don't match");
 
     alert(
       `${inputs.firstName} - ${inputs.lastName} - ${inputs.email} - ${inputs.confirmEmail} - ${inputs.password} - ${inputs.confirmPassword}`

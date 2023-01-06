@@ -41,10 +41,11 @@ const placeholdersMap: Record<
 const Input = (props: InputProps) => {
   return (
     <input
+      {...props}
       autoComplete="off"
       type={typesMap[props.name]}
       placeholder={placeholdersMap[props.name]}
-      {...props}
+      className="p-2 outline-blue-600 text-center"
     />
   );
 };
