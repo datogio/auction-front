@@ -15,7 +15,7 @@ const PageLayout = ({
   children,
 }: PageLayoutProps) => {
   return (
-    <div className="bg-gray-300 p-10 h-screen">
+    <div className="bg-gray-300 p-5 h-screen">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
