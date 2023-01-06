@@ -4,8 +4,6 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import * as errorActions from './error';
-import * as strapi from '../services/strapi';
 import * as api from '../services/api';
 import { RootState } from '.';
 import { SetStateAction } from 'react';
@@ -13,10 +11,10 @@ import { SetStateAction } from 'react';
 export const signOut = createAsyncThunk(
   'user/signOut',
   async ({}, { dispatch }) => {
-    strapi
+    api
       .signOut()
-      .then(() => dispatch(errorActions.set(null)))
-      .catch((err) => dispatch(errorActions.set(err)));
+      .then(() => dispatch(set(null)))
+      .catch((err) => console.log(err.message));
   }
 );
 
@@ -110,7 +108,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    set: (state: IState, action: PayloadAction<user.Model>) => {
+    set: (state: IState, action: PayloadAction<user.Model | null>) => {
       state.user = action.payload;
     },
   },

@@ -4,6 +4,23 @@ const headers = new Headers();
 headers.set('Accept', 'application/json');
 headers.set('Content-Type', 'application/json');
 
+export const signOut = () => {
+  return new Promise((resolve, reject) => {
+    fetch(`${CLIENT_URL}/api/auth`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ type: 'sign-out' }),
+    })
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        resolve({ message: 'success' });
+      })
+      .catch((err) => reject(err));
+  });
+};
+
 export const signIn = (email: string, password: string) => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
     fetch(`${CLIENT_URL}/api/auth`, {
