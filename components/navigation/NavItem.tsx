@@ -2,19 +2,20 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 import { GoHome } from 'react-icons/go';
 import { FiSettings } from 'react-icons/fi';
-import { BsBookmarkDash } from 'react-icons/bs';
+import { BsBookmarkDash, BsCart2 } from 'react-icons/bs';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { FiHelpCircle } from 'react-icons/fi';
 
 export interface NavItemProps {
   href: string;
-  icon: 'home' | 'settings' | 'saved' | 'notifications' | 'help';
+  icon: 'home' | 'store' | 'settings' | 'saved' | 'notifications' | 'help';
   value: string;
   active?: boolean;
 }
 
 const iconsMap: Record<NavItemProps['icon'], ReactNode> = {
   home: <GoHome />,
+  store: <BsCart2 />,
   settings: <FiSettings />,
   saved: <BsBookmarkDash />,
   notifications: <IoMdNotificationsOutline />,

@@ -9,11 +9,17 @@ export default {
 export const Navigation = (args: NavigationProps) => (
   <div className="bg-gray-100 p-5">
     <NavigationComponent>
-      <NavItem href="/" icon="home" value="HOME" active={true} />
-      <NavItem href="/" icon="saved" value="SAVED ITEMS" />
-      <NavItem href="/" icon="notifications" value="NOTIFICATIONS" />
-      <NavItem href="/" icon="settings" value="SETTINGS" />
-      <NavItem href="/" icon="help" value="HELP" />
+      <NavItem href="/" icon="home" value="HOME" active={false} />
+      <NavItem href="/" icon="store" value="STORE" active={true} />
+      <NavItem href="/" icon="saved" value="SAVED ITEMS" active={false} />
+      <NavItem
+        href="/"
+        icon="notifications"
+        value="NOTIFICATIONS"
+        active={false}
+      />
+      <NavItem href="/" icon="settings" value="SETTINGS" active={false} />
+      <NavItem href="/" icon="help" value="HELP" active={false} />
     </NavigationComponent>
   </div>
 );
