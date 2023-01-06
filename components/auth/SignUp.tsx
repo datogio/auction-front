@@ -1,5 +1,7 @@
 import { useState, ChangeEventHandler, MouseEventHandler } from 'react';
 import { AuthStateSwitch, AuthTitle, Button, Input } from '../../components';
+import { motion } from 'framer-motion';
+import { authAnimation } from '../../utils/animation';
 
 interface SignUpProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
@@ -57,7 +59,7 @@ const SignUp = (props: SignUpProps) => {
   };
 
   return (
-    <div className="space-y-5">
+    <motion.div {...authAnimation} className="space-y-5">
       <AuthTitle title="Sign Up" />
       <form
         onSubmit={(event) => event.preventDefault()}
@@ -92,7 +94,7 @@ const SignUp = (props: SignUpProps) => {
         <Button value="Sign Up" onClick={onButtonCLick} />
       </form>
       <AuthStateSwitch value="Sign In" onCLick={onLinkClick} />
-    </div>
+    </motion.div>
   );
 };
 
