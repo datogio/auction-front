@@ -28,7 +28,7 @@ const NavItem = (props: NavItemProps) => {
         className={`${
           props.active
             ? 'bg-blue-600 text-white cursor-default shadow-lg'
-            : 'cursor-pointer'
+            : 'cursor-pointer text-gray-600 hover:bg-gray-100 hover:shadow-lg'
         } transition duration-200 py-2 rounded-md w-[100%] px-4 flex items-center space-x-2`}
       >
         {iconsMap[props.icon]}
