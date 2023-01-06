@@ -28,7 +28,8 @@ const SignIn = (props: SignInProps) => {
   };
 
   return (
-    <div>
+    <div className="space-y-5">
+      <h1 className="text-center text-3xl font-bold">Sign In</h1>
       <form
         onSubmit={(event) => event.preventDefault()}
         className="flex flex-col space-y-2"

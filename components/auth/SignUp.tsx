@@ -57,7 +57,8 @@ const SignUp = (props: SignUpProps) => {
   };
 
   return (
-    <div>
+    <div className="space-y-5">
+      <h1 className="text-center text-3xl font-bold">Sign Up</h1>
       <form
         onSubmit={(event) => event.preventDefault()}
         className="flex flex-col space-y-2"
@@ -88,9 +89,9 @@ const SignUp = (props: SignUpProps) => {
           value={inputs.confirmPassword}
           onChange={onInputChange}
         />
-        <Button value="Sign In" onClick={onButtonCLick} />
+        <Button value="Sign Up" onClick={onButtonCLick} />
       </form>
-      <AuthStateSwitch value="Sign Up" onCLick={onLinkClick} />
+      <AuthStateSwitch value="Sign In" onCLick={onLinkClick} />
     </div>
   );
 };

@@ -8,12 +8,12 @@ const Auth = () => {
     setAuthState(state);
   };
 
-  if (authState === 'sign in')
-    return <SignIn setAuthState={onAuthStateChange} />;
-  if (authState === 'sign up')
-    return <SignUp setAuthState={onAuthStateChange} />;
-
-  return null;
+  return (
+    <div>
+      {authState === 'sign in' && <SignIn setAuthState={onAuthStateChange} />}
+      {authState === 'sign up' && <SignUp setAuthState={onAuthStateChange} />}
+    </div>
+  );
 };
 
 export default Auth;
