@@ -14,14 +14,15 @@ export const ListingCard = (args: ListingCardProps) => (
     <ListingCardComponent {...args} />
     <ListingCardComponent {...args} />
     <ListingCardComponent {...args} />
+    <ListingCardComponent {...args} />
   </div>
 );
 
 const args: ListingCardProps = {
   href: '/',
   image: fromImgToUrl(),
-  title: 'Listing Title',
-  details: '2 hours ago',
+  title: 'Some Title',
+  details: 'some details',
 };
 
 ListingCard.args = args;

@@ -12,7 +12,7 @@ export interface ListingCardProps {
 const ListingCard = (props: ListingCardProps) => {
   return (
     <Link href={props.href}>
-      <a className="col-span-1 py-2 px-3 bg-white rounded-lg space-y-1 shadow-lg transition duration-200 hover:scale-105">
+      <a className="col-span-1 p-2 bg-white rounded-lg space-y-1 shadow-lg transition duration-200 active:shadow-none active:scale-95 hover:scale-105 hover:shadow-2xl">
         <div className="relative h-28 w-[100%] rounded-lg overflow-hidden">
           <Image
             src={props.image}
