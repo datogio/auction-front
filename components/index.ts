@@ -5,3 +5,4 @@ export { default as Button } from './button/Button';
 export { default as NavItem } from './navigation/NavItem';
 export { default as ListinCard } from './listing/ListingCard';
 export { default as Navigation } from './navigation/Navigation';
+export { default as LeftAside } from './leftAside/LeftAside';
