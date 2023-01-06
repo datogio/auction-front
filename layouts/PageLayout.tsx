@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import { Auth, LeftAside, Overlay } from '../components';
-
+import { FaTimes } from 'react-icons/fa';
 import type { ReactNode } from 'react';
 
 interface PageLayoutProps {
@@ -17,6 +17,10 @@ const PageLayout = ({
 }: PageLayoutProps) => {
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
 
+  const handleAuthActivation = () => {
+    setIsAuthActive((prev) => !prev);
+  };
+
   return (
     <div className="bg-gray-300 p-5 h-screen">
       <Head>
@@ -25,7 +29,7 @@ const PageLayout = ({
       </Head>
 
       <div className="grid grid-cols-12 h-[100%] rounded-3xl overflow-hidden shadow-lg">
-        <LeftAside />
+        <LeftAside onAuthButtonClick={handleAuthActivation} />
 
         <main className="paddings col-span-7 bg-gray-100">{children}</main>
 
@@ -33,7 +37,15 @@ const PageLayout = ({
       </div>
       {isAuthActive && (
         <Overlay>
-          <Auth />
+          <div className="flex justify-end p-5">
+            <FaTimes
+              className="text-white text-4xl cursor-pointer"
+              onClick={handleAuthActivation}
+            />
+          </div>
+          <div className="h-[80%] flex justify-center items-center">
+            <Auth />
+          </div>
         </Overlay>
       )}
     </div>

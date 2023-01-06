@@ -1,8 +1,20 @@
 import { useRouter } from 'next/router';
-import { Navigation, NavItem, Identity } from '../../components';
+import { MouseEventHandler } from 'react';
+import { useSelector } from 'react-redux';
+import { Navigation, NavItem, Identity, Button } from '../../components';
+import * as userActions from '../../store/user';
 
-const LeftAside = () => {
+interface LeftAsideProps {
+  onAuthButtonClick: (state: boolean) => void;
+}
+
+const LeftAside = (props: LeftAsideProps) => {
   const router = useRouter();
+  const user = useSelector(userActions.selectUser);
+
+  const onAuthClick: MouseEventHandler<HTMLButtonElement> = () => {
+    props.onAuthButtonClick(true);
+  };
 
   return (
     <aside className="col-span-2 paddings bg-white flex flex-col justify-between">
@@ -45,12 +57,16 @@ const LeftAside = () => {
           active={router.pathname === '/help'}
         />
       </Navigation>
-      <Identity
-        firstName="David"
-        lastName="Giorgadze"
-        details="2 hours ago"
-        image=""
-      />
+      {user ? (
+        <Identity
+          firstName={user.firstName}
+          lastName={user.lastName}
+          details="2 hours ago"
+          image={user.image}
+        />
+      ) : (
+        <Button value="Sign In / SignUp" onClick={onAuthClick} />
+      )}
     </aside>
   );
 };

@@ -6,7 +6,7 @@ interface OverlayProps {
 
 const Overlay = (props: OverlayProps) => {
   return (
-    <div className="fixed z-50 top-0 bottom-0 left-0 right-0 flex items-center justify-center blue-glassmorphism">
+    <div className="fixed z-50 top-0 bottom-0 left-0 right-0 blue-glassmorphism">
       {props.children}
     </div>
   );
