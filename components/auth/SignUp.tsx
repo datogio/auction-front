@@ -1,5 +1,5 @@
 import { useState, ChangeEventHandler, MouseEventHandler } from 'react';
-import { Button, Input } from '../../components';
+import { AuthStateSwitch, Button, Input } from '../../components';
 
 interface SignUpProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
@@ -90,9 +90,7 @@ const SignUp = (props: SignUpProps) => {
         />
         <Button value="Sign In" onClick={onButtonCLick} />
       </form>
-      <div onClick={onLinkClick} className="cursor-pointer">
-        Sign In
-      </div>
+      <AuthStateSwitch value="Sign Up" onCLick={onLinkClick} />
     </div>
   );
 };
