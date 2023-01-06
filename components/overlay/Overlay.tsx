@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { overlayEntry } from '../../utils/animation';
+import { overlayAnimation } from '../../utils/animation';
 
 interface OverlayProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface OverlayProps {
 const Overlay = (props: OverlayProps) => {
   return (
     <motion.div
-      {...overlayEntry}
+      {...overlayAnimation}
       className="fixed z-50 top-0 bottom-0 left-0 right-0 blue-glassmorphism"
     >
       {props.children}

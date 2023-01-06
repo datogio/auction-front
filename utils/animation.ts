@@ -1,4 +1,4 @@
-export const overlayEntry = {
+export const overlayAnimation = {
   initial: {
     opacity: 0,
   },
@@ -7,5 +7,17 @@ export const overlayEntry = {
   },
   exit: {
     opacity: 0,
+  },
+};
+
+export const authAnimation = {
+  initial: {
+    scale: 0,
+  },
+  animate: {
+    scale: 1,
+  },
+  exit: {
+    scale: 0,
   },
 };
