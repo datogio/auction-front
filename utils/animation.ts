@@ -16,9 +16,6 @@ export const authAnimation = {
   },
   animate: {
     scale: 1,
-    transition: {
-      delay: 0.2,
-    },
   },
   exit: {
     scale: 0,
