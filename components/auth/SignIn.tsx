@@ -1,13 +1,21 @@
-import { useState, ChangeEventHandler, MouseEventHandler } from 'react';
+import {
+  useState,
+  ChangeEventHandler,
+  MouseEventHandler,
+  Dispatch,
+} from 'react';
 import { AuthStateSwitch, AuthTitle, Button, Input } from '../../components';
 import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
+import { useDispatch } from 'react-redux';
+import * as userActions from '../../store/user';
 
 interface SignInProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
 }
 
 const SignIn = (props: SignInProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
   const [inputs, setInputs] = useState<{ email: string; password: string }>({
     email: '',
     password: '',
@@ -21,8 +29,13 @@ const SignIn = (props: SignInProps) => {
     if (!inputs.email) return alert('Email is required');
     if (!inputs.password) return alert('Password is required');
 
-    alert(`${inputs.email} - ${inputs.password}`);
-    setInputs({ email: '', password: '' });
+    dispatch(
+      userActions.signIn({
+        email: inputs.email,
+        password: inputs.password,
+        setInputs,
+      })
+    );
   };
 
   const onLinkClick: MouseEventHandler<HTMLDivElement> = () => {

@@ -67,13 +67,29 @@ export const signUp = createAsyncThunk(
 export const signIn = createAsyncThunk(
   'user/signIn',
   async (
-    { identifier, password }: { identifier: string; password: string },
+    {
+      email,
+      password,
+      setInputs,
+    }: {
+      email: string;
+      password: string;
+      setInputs: (
+        value: SetStateAction<{
+          email: string;
+          password: string;
+        }>
+      ) => void;
+    },
     { dispatch }
   ) => {
-    strapi
-      .signIn(identifier, password)
-      .then(() => dispatch(errorActions.set(null)))
-      .catch((err) => dispatch(errorActions.set(err)));
+    api
+      .signIn(email, password)
+      .then((user) => {
+        dispatch(set(user));
+        setInputs({ email: '', password: '' });
+      })
+      .catch((err) => console.log(err.message));
   }
 );
 
