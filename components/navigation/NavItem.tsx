@@ -33,7 +33,7 @@ const NavItem = (props: NavItemProps) => {
         } transition duration-200 py-2 rounded-md w-[100%] px-4 flex items-center space-x-2`}
       >
         {iconsMap[props.icon]}
-        <div>{props.value}</div>
+        <div className="text-sm">{props.value}</div>
       </a>
     </Link>
   );
