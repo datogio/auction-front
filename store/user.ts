@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 import * as errorActions from './error';
 import * as strapi from '../services/strapi';
+import * as api from '../services/api';
 import { RootState } from '.';
 
 export const signOut = createAsyncThunk(
@@ -21,13 +22,20 @@ export const signOut = createAsyncThunk(
 export const signUp = createAsyncThunk(
   'user/signUp',
   async (
-    { identifier, password }: { identifier: string; password: string },
+    {
+      firstName,
+      lastName,
+      email,
+      password,
+    }: { firstName: string; lastName: string; email: string; password: string },
     { dispatch }
   ) => {
-    strapi
-      .signUp(identifier, password)
-      .then(() => dispatch(errorActions.set(null)))
-      .catch((err) => dispatch(errorActions.set(err)));
+    api
+      .signUp(firstName, lastName, email, password)
+      .then((user) => {
+        dispatch(set(user));
+      })
+      .catch((err) => console.log(err.message));
   }
 );
 

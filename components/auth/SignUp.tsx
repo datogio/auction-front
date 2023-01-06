@@ -1,13 +1,21 @@
-import { useState, ChangeEventHandler, MouseEventHandler } from 'react';
+import {
+  useState,
+  ChangeEventHandler,
+  MouseEventHandler,
+  Dispatch,
+} from 'react';
 import { AuthStateSwitch, AuthTitle, Button, Input } from '../../components';
 import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
+import * as userActions from '../../store/user';
+import { useDispatch } from 'react-redux';
 
 interface SignUpProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
 }
 
 const SignUp = (props: SignUpProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
   const [inputs, setInputs] = useState<{
     firstName: string;
     lastName: string;
@@ -41,8 +49,13 @@ const SignUp = (props: SignUpProps) => {
     if (inputs.password !== inputs.confirmPassword)
       return alert("Passwords don't match");
 
-    alert(
-      `${inputs.firstName} - ${inputs.lastName} - ${inputs.email} - ${inputs.confirmEmail} - ${inputs.password} - ${inputs.confirmPassword}`
+    dispatch(
+      userActions.signUp({
+        firstName: inputs.firstName,
+        lastName: inputs.lastName,
+        email: inputs.email,
+        password: inputs.password,
+      })
     );
     setInputs({
       firstName: '',
