@@ -8,7 +8,7 @@ import { FiHelpCircle } from 'react-icons/fi';
 
 export interface NavItemProps {
   href: string;
-  icon: 'settings' | 'home' | 'saved' | 'notifications' | 'help';
+  icon: 'home' | 'settings' | 'saved' | 'notifications' | 'help';
   value: string;
   active?: boolean;
 }
