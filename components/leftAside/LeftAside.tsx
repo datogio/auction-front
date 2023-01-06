@@ -6,7 +6,7 @@ const LeftAside = () => {
 
   return (
     <aside className="col-span-2 paddings bg-white flex flex-col justify-between">
-      <h1 className="text-3xl font-bold">Auction</h1>
+      <h1 className="text-3xl font-bold">Logo</h1>
       <Navigation>
         <NavItem
           href="/"

@@ -5,7 +5,7 @@ import type { NextPage } from 'next';
 const HomePage: NextPage = () => {
   return (
     <PageLayout pageTitle="Home Page" pageDescription="Home page description">
-      <div>Hello World!</div>
+      <div>Home Page</div>
     </PageLayout>
   );
 };

@@ -9,7 +9,7 @@ export interface AvatarProps {
 
 const sizezMap: Record<AvatarProps['size'], string> = {
   sm: 'h-6 w-6 text-xs',
-  md: 'h-10 w-10',
+  md: 'h-8 w-8',
   lg: 'h-20 w-20 text-3xl',
 };
 

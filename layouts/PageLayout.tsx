@@ -15,18 +15,18 @@ const PageLayout = ({
   children,
 }: PageLayoutProps) => {
   return (
-    <div className="bg-gray-300 p-7 h-screen">
+    <div className="bg-gray-300 p-5 h-screen">
       <Head>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
       </Head>
 
-      <div className="grid grid-cols-9 h-[100%] rounded-3xl overflow-hidden shadow-lg">
+      <div className="grid grid-cols-12 h-[100%] rounded-3xl overflow-hidden shadow-lg">
         <LeftAside />
 
-        <main className="paddings col-span-5 bg-gray-100">{children}</main>
+        <main className="paddings col-span-7 bg-gray-100">{children}</main>
 
-        <aside className="paddings col-span-2 bg-white">Right Aside</aside>
+        <aside className="paddings col-span-3 bg-white">Right Aside</aside>
       </div>
     </div>
   );
