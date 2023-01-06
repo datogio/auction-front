@@ -55,16 +55,9 @@ const SignUp = (props: SignUpProps) => {
         lastName: inputs.lastName,
         email: inputs.email,
         password: inputs.password,
+        setInputs,
       })
     );
-    setInputs({
-      firstName: '',
-      lastName: '',
-      email: '',
-      confirmEmail: '',
-      password: '',
-      confirmPassword: '',
-    });
   };
 
   const onLinkClick: MouseEventHandler<HTMLDivElement> = () => {

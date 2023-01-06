@@ -8,6 +8,7 @@ import * as errorActions from './error';
 import * as strapi from '../services/strapi';
 import * as api from '../services/api';
 import { RootState } from '.';
+import { SetStateAction } from 'react';
 
 export const signOut = createAsyncThunk(
   'user/signOut',
@@ -27,13 +28,37 @@ export const signUp = createAsyncThunk(
       lastName,
       email,
       password,
-    }: { firstName: string; lastName: string; email: string; password: string },
+      setInputs,
+    }: {
+      firstName: string;
+      lastName: string;
+      email: string;
+      password: string;
+      setInputs: (
+        value: SetStateAction<{
+          firstName: string;
+          lastName: string;
+          email: string;
+          confirmEmail: string;
+          password: string;
+          confirmPassword: string;
+        }>
+      ) => void;
+    },
     { dispatch }
   ) => {
     api
       .signUp(firstName, lastName, email, password)
       .then((user) => {
         dispatch(set(user));
+        setInputs({
+          firstName: '',
+          lastName: '',
+          email: '',
+          confirmEmail: '',
+          password: '',
+          confirmPassword: '',
+        });
       })
       .catch((err) => console.log(err.message));
   }
