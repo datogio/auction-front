@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import Head from 'next/head';
-import { LeftAside } from '../components';
+import { Auth, LeftAside, Overlay } from '../components';
 
 import type { ReactNode } from 'react';
 
@@ -14,6 +15,8 @@ const PageLayout = ({
   pageDescription,
   children,
 }: PageLayoutProps) => {
+  const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+
   return (
     <div className="bg-gray-300 p-5 h-screen">
       <Head>
@@ -28,6 +31,11 @@ const PageLayout = ({
 
         <aside className="paddings col-span-3 bg-white">Right Aside</aside>
       </div>
+      {isAuthActive && (
+        <Overlay>
+          <Auth />
+        </Overlay>
+      )}
     </div>
   );
 };
