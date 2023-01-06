@@ -11,3 +11,5 @@ export { default as SignIn } from './auth/SignIn';
 export { default as SignUp } from './auth/SignUp';
 export { default as Input } from './input/Input';
 export { default as AuthStateSwitch } from './auth/AuthStateSwitch';
+export { default as Overlay } from './overlay/Overlay';
+export { default as AuthTitle } from './auth/AuthTitle';

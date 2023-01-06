@@ -1,5 +1,5 @@
 import { useState, ChangeEventHandler, MouseEventHandler } from 'react';
-import { AuthStateSwitch, Button, Input } from '../../components';
+import { AuthStateSwitch, AuthTitle, Button, Input } from '../../components';
 
 interface SignUpProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
@@ -58,7 +58,7 @@ const SignUp = (props: SignUpProps) => {
 
   return (
     <div className="space-y-5">
-      <h1 className="text-center text-3xl font-bold">Sign Up</h1>
+      <AuthTitle title="Sign Up" />
       <form
         onSubmit={(event) => event.preventDefault()}
         className="flex flex-col space-y-2"

@@ -9,7 +9,7 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className="md:w-[30%]">
       {authState === 'sign in' && <SignIn setAuthState={onAuthStateChange} />}
       {authState === 'sign up' && <SignUp setAuthState={onAuthStateChange} />}
     </div>

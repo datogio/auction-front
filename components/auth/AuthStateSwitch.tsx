@@ -7,7 +7,7 @@ interface AuthStateSwitchProps {
 
 const AuthStateSwitch = (props: AuthStateSwitchProps) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center text-white transition duration-200 hover:text-gray-200 hover:scale-x-110">
       <div onClick={props.onCLick} className="cursor-pointer">
         {props.value}
       </div>
