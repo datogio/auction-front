@@ -74,6 +74,7 @@ const PageLayout = ({
               key={index}
               type={prompt.type}
               message={prompt.message}
+              index={index}
             />
           ))}
         </PromptList>
