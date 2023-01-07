@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react';
+import { ChangeEventHandler, useEffect, useRef } from 'react';
 
 interface InputProps {
   name:
@@ -10,6 +10,7 @@ interface InputProps {
     | 'confirmPassword';
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  autofocus?: boolean;
 }
 
 const typesMap: Record<InputProps['name'], 'text' | 'email' | 'password'> = {
@@ -39,9 +40,16 @@ const placeholdersMap: Record<
 };
 
 const Input = (props: InputProps) => {
+  const ref = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    props.autofocus && ref.current?.focus();
+  }, [props.autofocus]);
+
   return (
     <input
       {...props}
+      ref={ref}
       autoComplete="off"
       type={typesMap[props.name]}
       placeholder={placeholdersMap[props.name]}

@@ -49,7 +49,12 @@ const SignIn = (props: SignInProps) => {
         onSubmit={(event) => event.preventDefault()}
         className="flex flex-col space-y-2"
       >
-        <Input name="email" value={inputs.email} onChange={onInputChange} />
+        <Input
+          name="email"
+          value={inputs.email}
+          onChange={onInputChange}
+          autofocus
+        />
         <Input
           name="password"
           value={inputs.password}

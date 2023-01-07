@@ -75,6 +75,7 @@ const SignUp = (props: SignUpProps) => {
           name="firstName"
           value={inputs.firstName}
           onChange={onInputChange}
+          autofocus
         />
         <Input
           name="lastName"
