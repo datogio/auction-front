@@ -27,6 +27,12 @@ export const signOut = createAsyncThunk(
       .signOut()
       .then(() => {
         dispatch(set(null));
+        dispatch(
+          promptActions.add({
+            type: 'notification',
+            message: 'Successfuly signed out',
+          })
+        );
         Router.push('/');
       })
       .catch((err) =>
