@@ -10,7 +10,7 @@ const Button = (props: ButtonProps) => {
     <button
       type="submit"
       onClick={props.onClick}
-      className="bg-blue-600 text-white w-[100%] rounded-md py-2 shadow-lg transition duration-200 hover:bg-blue-700 active:shadow-none"
+      className="bg-blue-600 text-white text-lg w-[100%] rounded-md py-2 shadow-lg transition duration-200 hover:bg-blue-700 active:shadow-none"
     >
       {props.value}
     </button>

@@ -45,7 +45,7 @@ const Input = (props: InputProps) => {
       autoComplete="off"
       type={typesMap[props.name]}
       placeholder={placeholdersMap[props.name]}
-      className="p-2 outline-blue-600 text-center rounded-lg"
+      className="p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg"
     />
   );
 };
