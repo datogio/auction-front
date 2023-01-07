@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Auth, LeftAside, Overlay } from '../components';
 import { FaTimes } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../store/user';
 
 interface PageLayoutProps {
@@ -18,12 +18,13 @@ const PageLayout = ({
   children,
 }: PageLayoutProps) => {
   const dispatch: Dispatch<any> = useDispatch();
+  const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+  const user = useSelector(userActions.selectUser);
 
   useEffect(() => {
-    dispatch(userActions.setUser());
-  }, [dispatch]);
-
-  const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+    user && setIsAuthActive(false);
+    !user && dispatch(userActions.setUser());
+  }, [dispatch, user]);
 
   const handleAuthActivation = () => {
     setIsAuthActive((prev) => !prev);

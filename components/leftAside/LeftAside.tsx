@@ -23,45 +23,53 @@ const LeftAside = (props: LeftAsideProps) => {
 
   return (
     <aside className="col-span-2 paddings bg-white flex flex-col justify-between">
-      <h1 className="text-3xl font-bold">Logo</h1>
-      <Navigation>
-        <NavItem
-          href="/"
-          icon="home"
-          value="HOME"
-          active={router.pathname === '/'}
-        />
-        <NavItem
-          href="/store"
-          icon="store"
-          value="STORE"
-          active={router.pathname === '/store'}
-        />
-        <NavItem
-          href="/saved"
-          icon="saved"
-          value="SAVED ITEMS"
-          active={router.pathname === '/saved'}
-        />
-        <NavItem
-          href="/notifications"
-          icon="notifications"
-          value="NOTIFICATIONS"
-          active={router.pathname === '/notifications'}
-        />
-        <NavItem
-          href="/settings"
-          icon="settings"
-          value="SETTINGS"
-          active={router.pathname === '/settings'}
-        />
-        <NavItem
-          href="/help"
-          icon="help"
-          value="HELP"
-          active={router.pathname === '/help'}
-        />
-      </Navigation>
+      <div className="space-y-10">
+        <h1 className="text-3xl font-bold">Logo</h1>
+        <Navigation>
+          <NavItem
+            href="/"
+            icon="home"
+            value="HOME"
+            active={router.pathname === '/'}
+          />
+          <NavItem
+            href="/store"
+            icon="store"
+            value="STORE"
+            active={router.pathname === '/store'}
+          />
+          {user && (
+            <NavItem
+              href="/saved"
+              icon="saved"
+              value="SAVED ITEMS"
+              active={router.pathname === '/saved'}
+            />
+          )}
+          {user && (
+            <NavItem
+              href="/notifications"
+              icon="notifications"
+              value="NOTIFICATIONS"
+              active={router.pathname === '/notifications'}
+            />
+          )}
+          {user && (
+            <NavItem
+              href="/settings"
+              icon="settings"
+              value="SETTINGS"
+              active={router.pathname === '/settings'}
+            />
+          )}
+          <NavItem
+            href="/help"
+            icon="help"
+            value="HELP"
+            active={router.pathname === '/help'}
+          />
+        </Navigation>
+      </div>
       {user ? (
         <div onClick={handleSignOut} className="cursor-pointer">
           <Identity

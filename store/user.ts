@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import {
   createAsyncThunk,
   createSelector,
@@ -23,7 +24,10 @@ export const signOut = createAsyncThunk(
   async ({}, { dispatch }) => {
     api
       .signOut()
-      .then(() => dispatch(set(null)))
+      .then(() => {
+        dispatch(set(null));
+        Router.push('/');
+      })
       .catch((err) => console.log(err.message));
   }
 );
