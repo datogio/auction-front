@@ -3,7 +3,9 @@ import { BiErrorCircle } from 'react-icons/bi';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
+import { motion } from 'framer-motion';
 import * as promptActions from '../../store/prompt';
+import { promptAnimation } from '../../utils/animation';
 
 export interface PromptItemProps extends prompts.Model {
   index: number;
@@ -27,7 +29,8 @@ const PromptItem = (props: PromptItemProps) => {
   };
 
   return (
-    <div
+    <motion.div
+      {...promptAnimation}
       className={`${
         colorsMap[props.type]
       } flex items-center justify-between p-2 rounded shadow-lg`}
@@ -37,7 +40,7 @@ const PromptItem = (props: PromptItemProps) => {
         <div className="opacity-60">{props.message}</div>
       </div>
       <FaTimes className="cursor-pointer" onClick={onTimesClick} />
-    </div>
+    </motion.div>
   );
 };
 

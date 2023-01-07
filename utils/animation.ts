@@ -21,3 +21,12 @@ export const authAnimation = {
     scale: 0,
   },
 };
+
+export const promptAnimation = {
+  initial: {
+    scale: 0,
+  },
+  animate: {
+    scale: 1,
+  },
+};
