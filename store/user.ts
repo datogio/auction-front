@@ -66,6 +66,7 @@ export const signUp = createAsyncThunk(
       .signUp(firstName, lastName, email, password)
       .then((user) => {
         dispatch(set(user));
+        dispatch(promptActions.set([]));
         setInputs({
           firstName: '',
           lastName: '',
@@ -109,6 +110,7 @@ export const signIn = createAsyncThunk(
       .signIn(email, password)
       .then((user) => {
         dispatch(set(user));
+        dispatch(promptActions.set([]));
         setInputs({ email: '', password: '' });
       })
       .catch(() =>

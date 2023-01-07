@@ -8,7 +8,7 @@ export const selectAllPrompts = createSelector(
 );
 
 interface IState {
-  prompts: PromptItemProps[];
+  prompts: prompts.Model[];
 }
 
 const initialState: IState = {
@@ -19,10 +19,10 @@ export const promptSlice = createSlice({
   name: 'prompt',
   initialState,
   reducers: {
-    set: (state: IState, action: PayloadAction<PromptItemProps[]>) => {
+    set: (state: IState, action: PayloadAction<prompts.Model[]>) => {
       state.prompts = action.payload;
     },
-    add: (state: IState, action: PayloadAction<PromptItemProps>) => {
+    add: (state: IState, action: PayloadAction<prompts.Model>) => {
       state.prompts = [...state.prompts, action.payload];
     },
     remove: (state: IState, action: PayloadAction<number>) => {

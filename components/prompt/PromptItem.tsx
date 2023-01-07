@@ -5,9 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import * as promptActions from '../../store/prompt';
 
-export interface PromptItemProps {
-  type: 'error' | 'notification';
-  message: string;
+export interface PromptItemProps extends prompts.Model {
   index: number;
 }
 
