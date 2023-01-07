@@ -22,9 +22,12 @@ export const promptSlice = createSlice({
     set: (state: IState, action: PayloadAction<PromptItemProps[]>) => {
       state.prompts = action.payload;
     },
+    add: (state: IState, action: PayloadAction<PromptItemProps>) => {
+      state.prompts = [...state.prompts, action.payload];
+    },
   },
 });
 
-export const { set } = promptSlice.actions;
+export const { set, add } = promptSlice.actions;
 
 export default promptSlice.reducer;

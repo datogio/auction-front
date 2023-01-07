@@ -8,6 +8,7 @@ import {
 import * as api from '../services/api';
 import { RootState } from '.';
 import { SetStateAction } from 'react';
+import * as promptActions from './prompt';
 
 export const setUser = createAsyncThunk(
   'user/setUser',
@@ -15,7 +16,7 @@ export const setUser = createAsyncThunk(
     api
       .getUser()
       .then((user) => dispatch(set(user)))
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err));
   }
 );
 
@@ -28,7 +29,9 @@ export const signOut = createAsyncThunk(
         dispatch(set(null));
         Router.push('/');
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) =>
+        dispatch(promptActions.add({ type: 'error', message: err.message }))
+      );
   }
 );
 
@@ -72,7 +75,14 @@ export const signUp = createAsyncThunk(
           confirmPassword: '',
         });
       })
-      .catch((err) => console.log(err.message));
+      .catch(() =>
+        dispatch(
+          promptActions.add({
+            type: 'error',
+            message: 'Email is taken by another user',
+          })
+        )
+      );
   }
 );
 
@@ -101,7 +111,14 @@ export const signIn = createAsyncThunk(
         dispatch(set(user));
         setInputs({ email: '', password: '' });
       })
-      .catch((err) => console.log(err.message));
+      .catch(() =>
+        dispatch(
+          promptActions.add({
+            type: 'error',
+            message: 'Invalid email or password',
+          })
+        )
+      );
   }
 );
 
