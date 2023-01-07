@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './user';
-import errorReducer from './error';
+import promptReducer from './prompt';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
-    error: errorReducer,
+    prompts: promptReducer,
   },
   devTools: process.env.NODE_ENV != 'production',
 });

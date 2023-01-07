@@ -11,6 +11,7 @@ import { FaTimes } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../store/user';
+import * as promptActions from '../store/prompt';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -26,6 +27,7 @@ const PageLayout = ({
   const dispatch: Dispatch<any> = useDispatch();
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
   const user = useSelector(userActions.selectUser);
+  const prompts = useSelector(promptActions.selectAllPrompts);
 
   useEffect(() => {
     user && setIsAuthActive(false);
@@ -65,10 +67,17 @@ const PageLayout = ({
           </Overlay>
         )}
       </AnimatePresence>
-      <PromptList>
-        <PromptItem type="error" message="Test error" />
-        <PromptItem type="notification" message="Test notification" />
-      </PromptList>
+      {prompts.length > 0 && (
+        <PromptList>
+          {prompts.map((prompt, index) => (
+            <PromptItem
+              key={index}
+              type={prompt.type}
+              message={prompt.message}
+            />
+          ))}
+        </PromptList>
+      )}
     </div>
   );
 };
