@@ -1,6 +1,12 @@
 import { useState, useEffect, Dispatch, ReactNode } from 'react';
 import Head from 'next/head';
-import { Auth, LeftAside, Overlay } from '../components';
+import {
+  Auth,
+  LeftAside,
+  Overlay,
+  PromptList,
+  PromptItem,
+} from '../components';
 import { FaTimes } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -59,6 +65,10 @@ const PageLayout = ({
           </Overlay>
         )}
       </AnimatePresence>
+      <PromptList>
+        <PromptItem type="error" message="Test error" />
+        <PromptItem type="notification" message="Test notification" />
+      </PromptList>
     </div>
   );
 };
