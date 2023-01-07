@@ -35,6 +35,7 @@ const PageLayout = ({
   }, [dispatch, user]);
 
   const handleAuthActivation = () => {
+    dispatch(promptActions.set([]));
     setIsAuthActive((prev) => !prev);
   };
 

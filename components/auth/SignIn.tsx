@@ -46,6 +46,7 @@ const SignIn = (props: SignInProps) => {
   };
 
   const onLinkClick: MouseEventHandler<HTMLDivElement> = () => {
+    dispatch(promptActions.set([]));
     props.setAuthState('sign up');
   };
 
