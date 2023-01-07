@@ -8,6 +8,7 @@ import { AuthStateSwitch, AuthTitle, Button, Input } from '../../components';
 import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
 import * as userActions from '../../store/user';
+import * as promptActions from '../../store/prompt';
 import { useDispatch } from 'react-redux';
 
 interface SignUpProps {
@@ -37,17 +38,44 @@ const SignUp = (props: SignUpProps) => {
   };
 
   const onButtonCLick: MouseEventHandler<HTMLButtonElement> = () => {
-    if (!inputs.firstName) return alert('First name is required');
-    if (!inputs.lastName) return alert('Last name is required');
-    if (!inputs.email) return alert('Email is required');
-    if (!inputs.confirmEmail) alert('Email confirmation is require');
-    if (!inputs.password) return alert('Password is required');
+    if (!inputs.firstName)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'First name is required' })
+      );
+    if (!inputs.lastName)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'Last name is required' })
+      );
+    if (!inputs.email)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'Email is required' })
+      );
+    if (!inputs.confirmEmail)
+      return dispatch(
+        promptActions.add({
+          type: 'error',
+          message: 'Email confirmation is require',
+        })
+      );
+    if (!inputs.password)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'Password is required' })
+      );
     if (!inputs.confirmPassword)
-      return alert('Password confirmation is required');
+      return dispatch(
+        promptActions.add({
+          type: 'error',
+          message: 'Password confirmation is required',
+        })
+      );
     if (inputs.email !== inputs.confirmEmail)
-      return alert("Emails don't match");
+      return dispatch(
+        promptActions.add({ type: 'error', message: "Emails don't match" })
+      );
     if (inputs.password !== inputs.confirmPassword)
-      return alert("Passwords don't match");
+      return dispatch(
+        promptActions.add({ type: 'error', message: "Passwords don't match" })
+      );
 
     dispatch(
       userActions.signUp({
