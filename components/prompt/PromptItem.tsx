@@ -27,7 +27,7 @@ const PromptItem = (props: PromptItemProps) => {
     >
       <div className="flex items-center space-x-2">
         <div className="text-2xl">{iconsMap[props.type]}</div>
-        <div>{props.message}</div>
+        <div className="opacity-60">{props.message}</div>
       </div>
       <FaTimes className="cursor-pointer" />
     </div>

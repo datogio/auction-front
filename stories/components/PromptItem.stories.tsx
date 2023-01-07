@@ -12,7 +12,7 @@ export const PromptItem = (args: PromptItemProps) => (
 
 const args: PromptItemProps = {
   type: 'error',
-  message: 'Test error.',
+  message: 'Prompt message',
 };
 
 PromptItem.args = args;
