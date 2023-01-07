@@ -68,7 +68,7 @@ export const signUp = createAsyncThunk(
         dispatch(set(user));
         dispatch(
           promptActions.set([
-            { type: 'notification', message: 'Successfuly signed up' },
+            { type: 'notification', message: `Welcome ${user.firstName}` },
           ])
         );
         setInputs({
@@ -116,7 +116,7 @@ export const signIn = createAsyncThunk(
         dispatch(set(user));
         dispatch(
           promptActions.set([
-            { type: 'notification', message: 'Successfuly signed in' },
+            { type: 'notification', message: `Welcome ${user.firstName}` },
           ])
         );
         setInputs({ email: '', password: '' });
