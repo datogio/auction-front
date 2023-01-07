@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
 import { useDispatch } from 'react-redux';
 import * as userActions from '../../store/user';
+import * as promptActions from '../../store/prompt';
 
 interface SignInProps {
   setAuthState: (state: 'sign in' | 'sign up') => void;
@@ -26,8 +27,14 @@ const SignIn = (props: SignInProps) => {
   };
 
   const onButtonCLick: MouseEventHandler<HTMLButtonElement> = () => {
-    if (!inputs.email) return alert('Email is required');
-    if (!inputs.password) return alert('Password is required');
+    if (!inputs.email)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'Email is required' })
+      );
+    if (!inputs.password)
+      return dispatch(
+        promptActions.add({ type: 'error', message: 'Password is required' })
+      );
 
     dispatch(
       userActions.signIn({
