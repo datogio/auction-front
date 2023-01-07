@@ -28,5 +28,9 @@ export const promptAnimation = {
   },
   animate: {
     scale: 1,
+    transition: {
+      type: 'spring',
+      bounce: 0.6,
+    },
   },
 };
