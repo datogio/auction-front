@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
-import { MouseEventHandler } from 'react';
-import { useSelector } from 'react-redux';
+import { Dispatch, MouseEventHandler } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigation, NavItem, Identity, Button } from '../../components';
 import * as userActions from '../../store/user';
 
@@ -9,11 +9,16 @@ interface LeftAsideProps {
 }
 
 const LeftAside = (props: LeftAsideProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
   const router = useRouter();
   const user = useSelector(userActions.selectUser);
 
   const onAuthClick: MouseEventHandler<HTMLButtonElement> = () => {
     props.onAuthButtonClick(true);
+  };
+
+  const handleSignOut: MouseEventHandler<HTMLDivElement> = () => {
+    dispatch(userActions.signOut());
   };
 
   return (
@@ -58,12 +63,14 @@ const LeftAside = (props: LeftAsideProps) => {
         />
       </Navigation>
       {user ? (
-        <Identity
-          firstName={user.firstName}
-          lastName={user.lastName}
-          details="2 hours ago"
-          image={user.image}
-        />
+        <div onClick={handleSignOut} className="cursor-pointer">
+          <Identity
+            firstName={user.firstName}
+            lastName={user.lastName}
+            details="2 hours ago"
+            image={user.image}
+          />
+        </div>
       ) : (
         <Button value="Sign In / SignUp" onClick={onAuthClick} />
       )}
