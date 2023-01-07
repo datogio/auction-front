@@ -8,6 +8,16 @@ import * as api from '../services/api';
 import { RootState } from '.';
 import { SetStateAction } from 'react';
 
+export const setUser = createAsyncThunk(
+  'user/setUser',
+  async ({}, { dispatch }) => {
+    api
+      .getUser()
+      .then((user) => dispatch(set(user)))
+      .catch((err) => console.log(err.message));
+  }
+);
+
 export const signOut = createAsyncThunk(
   'user/signOut',
   async ({}, { dispatch }) => {

@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, Dispatch, ReactNode } from 'react';
 import Head from 'next/head';
 import { Auth, LeftAside, Overlay } from '../components';
 import { FaTimes } from 'react-icons/fa';
-import type { ReactNode } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import * as userActions from '../store/user';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -16,6 +17,12 @@ const PageLayout = ({
   pageDescription,
   children,
 }: PageLayoutProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
+
+  useEffect(() => {
+    dispatch(userActions.setUser());
+  }, [dispatch]);
+
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
 
   const handleAuthActivation = () => {
