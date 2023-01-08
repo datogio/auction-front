@@ -11,7 +11,7 @@ const Auth = () => {
   };
 
   return (
-    <motion.div {...authAnimation} className="md:w-[30%]">
+    <motion.div {...authAnimation} className="w-[94%] md:w-[30%]">
       {authState === 'sign in' && <SignIn setAuthState={onAuthStateChange} />}
       {authState === 'sign up' && <SignUp setAuthState={onAuthStateChange} />}
     </motion.div>

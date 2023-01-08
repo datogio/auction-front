@@ -1,6 +1,7 @@
 import { Dispatch, MouseEventHandler } from 'react';
 import { useDispatch } from 'react-redux';
 import * as categoryActions from '../../store/category';
+import * as promptActions from '../../store/prompt';
 
 export interface CategoryTagProps {
   category: category.Model | null;
@@ -12,6 +13,7 @@ const CategoryTag = (props: CategoryTagProps) => {
 
   const onClick: MouseEventHandler<HTMLDivElement> = () => {
     dispatch(categoryActions.setActive(props.category));
+    dispatch(promptActions.set([]));
   };
 
   return (

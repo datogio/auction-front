@@ -10,8 +10,8 @@ import { promptAnimation } from '../../utils/animation';
 export type PromptItemProps = prompts.Model;
 
 const colorsMap: Record<PromptItemProps['type'], string> = {
-  error: 'bg-red-200',
-  notification: 'bg-green-200',
+  error: 'bg-red-100 text-red-600 border-red-600',
+  notification: 'bg-green-100 text-green-600 border-green-600',
 };
 
 const iconsMap: Record<PromptItemProps['type'], ReactNode> = {
@@ -31,11 +31,11 @@ const PromptItem = (props: PromptItemProps) => {
       {...promptAnimation}
       className={`${
         colorsMap[props.type]
-      } flex items-center justify-between p-2 rounded shadow-lg`}
+      } flex items-center justify-between p-2 rounded shadow-lg border`}
     >
       <div className="flex items-center space-x-2">
         <div className="text-2xl">{iconsMap[props.type]}</div>
-        <div className="opacity-60">{props.message}</div>
+        <div className="opacity-60 font-bold">{props.message}</div>
       </div>
       <FaTimes className="cursor-pointer" onClick={onTimesClick} />
     </motion.div>
