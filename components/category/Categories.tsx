@@ -10,6 +10,7 @@ const Categories = () => {
     <div className="space-y-2">
       <h2 className="text-xl font-bold">Categories</h2>
       <div className="flex flex-wrap justify-center gap-3">
+        <CategoryTag category={null} active={activeCategory === null} />
         {categories.map((category) => (
           <CategoryTag
             key={category._id}

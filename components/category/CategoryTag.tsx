@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import * as categoryActions from '../../store/category';
 
 export interface CategoryTagProps {
-  category: category.Model;
+  category: category.Model | null;
   active?: boolean;
 }
 
@@ -23,7 +23,7 @@ const CategoryTag = (props: CategoryTagProps) => {
           : 'bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl'
       } transition rounded py-1 px-4`}
     >
-      {props.category.title}
+      {props.category ? props.category.title : 'All'}
     </div>
   );
 };
