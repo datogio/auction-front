@@ -12,6 +12,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../store/user';
 import * as promptActions from '../store/prompt';
+import * as categoryActions from '../store/category';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -32,6 +33,7 @@ const PageLayout = ({
   useEffect(() => {
     user && setIsAuthActive(false);
     !user && dispatch(userActions.setUser());
+    dispatch(categoryActions.setAllCategories());
   }, [dispatch, user]);
 
   const handleAuthActivation = () => {

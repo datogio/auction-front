@@ -4,6 +4,22 @@ const headers = new Headers();
 headers.set('Accept', 'application/json');
 headers.set('Content-Type', 'application/json');
 
+export const getAllCategories = () => {
+  return new Promise(
+    (resolve: (categories: category.Model[]) => void, reject) => {
+      fetch(`${API_URL}/category`)
+        .then(async (resp) => {
+          if (!resp.ok) {
+            reject(resp);
+          }
+          const { data: categories } = await resp.json();
+          resolve(categories);
+        })
+        .catch((err) => reject(err));
+    }
+  );
+};
+
 export const getUser = () => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
     fetch(`${CLIENT_URL}/api/user`)
