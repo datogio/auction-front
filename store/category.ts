@@ -24,12 +24,19 @@ export const selectAllCategories = createSelector(
   (categories) => categories
 );
 
+export const selectActiveCategory = createSelector(
+  ({ categories: state }: RootState) => state.active,
+  (active) => active
+);
+
 interface IState {
   categories: category.Model[];
+  active: category.Model | null;
 }
 
 const initialState: IState = {
   categories: [],
+  active: null,
 };
 
 export const categorySlice = createSlice({
@@ -39,9 +46,15 @@ export const categorySlice = createSlice({
     set: (state: IState, action: PayloadAction<category.Model[]>) => {
       state.categories = action.payload;
     },
+    setActive: (
+      state: IState,
+      action: PayloadAction<category.Model | null>
+    ) => {
+      state.active = action.payload;
+    },
   },
 });
 
-export const { set } = categorySlice.actions;
+export const { set, setActive } = categorySlice.actions;
 
 export default categorySlice.reducer;

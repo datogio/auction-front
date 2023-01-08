@@ -3,6 +3,7 @@ import { CategoryTag } from '../../components';
 import * as categoryActions from '../../store/category';
 
 const Categories = () => {
+  const activeCategory = useSelector(categoryActions.selectActiveCategory);
   const categories = useSelector(categoryActions.selectAllCategories);
 
   return (
@@ -10,7 +11,11 @@ const Categories = () => {
       <h2 className="text-xl font-bold">Categories</h2>
       <div className="flex flex-wrap justify-center gap-3">
         {categories.map((category) => (
-          <CategoryTag key={category._id} title={category.title} />
+          <CategoryTag
+            key={category._id}
+            category={category}
+            active={category._id === activeCategory?._id}
+          />
         ))}
       </div>
     </div>
