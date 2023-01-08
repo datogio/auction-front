@@ -9,7 +9,7 @@ const CategoryTag = (props: CategoryTagProps) => {
       className={`${
         props.active
           ? 'bg-gray-400 text-white'
-          : 'bg-gray-200 cursor-pointer shadow-lg hover:bg-gray-100'
+          : 'bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl'
       } transition rounded py-1 px-4`}
     >
       {props.title}
