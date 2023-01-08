@@ -1,9 +1,9 @@
-import { Avatar as AvatarComponent } from '../../components';
-import type { AvatarProps } from '../../components/avatar/Avatar';
+import { Avatar as AvatarComponent } from '..';
+import type { AvatarProps } from './Avatar';
 import fromImgToUrl from '../../__mocks__/fromImgToUrl';
 
-export default {
-  title: 'Components/Avatar',
+const story = {
+  title: 'Components/avatar/Avatar',
   component: AvatarComponent,
 };
 
@@ -15,4 +15,7 @@ const args: AvatarProps = {
   lastName: 'Giorgadze',
   image: fromImgToUrl(),
 };
+
 Avatar.args = args;
+
+export default story;

@@ -1,8 +1,8 @@
-import { NavItem as NavItemComponent } from '../../components';
-import type { NavItemProps } from '../../components/navigation/NavItem';
+import { NavItem as NavItemComponent } from '..';
+import type { NavItemProps } from './NavItem';
 
-export default {
-  title: 'Components/NavItem',
+const story = {
+  title: 'Components/navigation/NavItem',
   component: NavItemComponent,
 };
 
@@ -16,3 +16,5 @@ const args: NavItemProps = {
 };
 
 NavItem.args = args;
+
+export default story;

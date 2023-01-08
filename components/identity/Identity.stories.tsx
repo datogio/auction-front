@@ -1,9 +1,9 @@
-import { Identity as IdentityComponent } from '../../components';
+import { Identity as IdentityComponent } from '..';
 import fromImgToUrl from '../../__mocks__/fromImgToUrl';
-import type { IdentityProps } from '../../components/identity/Identity';
+import type { IdentityProps } from './Identity';
 
-export default {
-  title: 'Components/Identity',
+const story = {
+  title: 'Components/identity/Identity',
   component: IdentityComponent,
 };
 
@@ -20,3 +20,5 @@ const args: IdentityProps = {
   image: fromImgToUrl(),
 };
 Identity.args = args;
+
+export default story;

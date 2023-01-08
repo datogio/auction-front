@@ -1,8 +1,8 @@
-import { Button as ButtonComponent } from '../../components';
-import type { ButtonProps } from '../../components/button/Button';
+import { Button as ButtonComponent } from '..';
+import type { ButtonProps } from './Button';
 
-export default {
-  title: 'Components/Button',
+const story = {
+  title: 'Components/button/Button',
   component: ButtonComponent,
 };
 
@@ -14,3 +14,5 @@ const args: ButtonProps = {
 };
 
 Button.args = args;
+
+export default story;

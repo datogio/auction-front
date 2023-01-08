@@ -1,14 +1,14 @@
-import { Navigation as NavigationComponent, NavItem } from '../../components';
-import type { NavigationProps } from '../../components/navigation/Navigation';
+import { Navigation as NavigationComponent, NavItem } from '..';
+import type { NavigationProps } from './Navigation';
 
-export default {
-  title: 'Components/Navigation',
+const story = {
+  title: 'Components/navigation/Navigation',
   component: NavigationComponent,
 };
 
 export const Navigation = (args: NavigationProps) => (
   <div className="bg-gray-100 p-5">
-    <NavigationComponent>
+    <NavigationComponent {...args}>
       <NavItem href="/" icon="home" value="HOME" active={false} />
       <NavItem href="/" icon="store" value="STORE" active={true} />
       <NavItem href="/" icon="saved" value="SAVED ITEMS" active={false} />
@@ -27,3 +27,5 @@ export const Navigation = (args: NavigationProps) => (
 const args: NavigationProps = {};
 
 Navigation.args = args;
+
+export default story;

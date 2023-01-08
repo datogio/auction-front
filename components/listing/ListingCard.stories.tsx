@@ -1,9 +1,9 @@
-import { ListinCard as ListingCardComponent } from '../../components';
-import type { ListingCardProps } from '../../components/listing/ListingCard';
+import { ListinCard as ListingCardComponent } from '..';
+import type { ListingCardProps } from './ListingCard';
 import fromImgToUrl from '../../__mocks__/fromImgToUrl';
 
-export default {
-  title: 'Components/ListingCard',
+const story = {
+  title: 'Components/listing/ListingCard',
   component: ListingCardComponent,
 };
 
@@ -26,3 +26,5 @@ const args: ListingCardProps = {
 };
 
 ListingCard.args = args;
+
+export default story;
