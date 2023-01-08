@@ -11,7 +11,7 @@ export default {
 
 export const PromptList = (args: PromptListProps) => (
   <PromptListComponent>
-    <PromptItem type="error" message="Test error" index={1} />
-    <PromptItem type="notification" message="Test notification" index={2} />
+    <PromptItem type="error" message="Test error" id={1} />
+    <PromptItem type="notification" message="Test notification" id={2} />
   </PromptListComponent>
 );
