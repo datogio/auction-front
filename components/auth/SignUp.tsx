@@ -67,7 +67,7 @@ const SignUp = (props: SignUpProps) => {
         promptActions.add({
           id: Math.random(),
           type: 'error',
-          message: 'Email confirmation is require',
+          message: 'Email confirmation is required',
         })
       );
     if (!inputs.password)
