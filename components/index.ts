@@ -16,3 +16,4 @@ export { default as Overlay } from './overlay/Overlay';
 export { default as AuthTitle } from './auth/AuthTitle';
 export { default as PromptItem } from './prompt/PromptItem';
 export { default as PromptList } from './prompt/PromptList';
+export { default as CategoryTag } from './category/CategoryTag';
