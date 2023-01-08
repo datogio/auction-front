@@ -31,7 +31,7 @@ const PromptItem = (props: PromptItemProps) => {
       {...promptAnimation}
       className={`${
         colorsMap[props.type]
-      } flex items-center justify-between p-2 rounded shadow-lg border`}
+      } flex items-center justify-between p-2 rounded shadow-lg border cursor-default`}
     >
       <div className="flex items-center space-x-2">
         <div className="text-2xl">{iconsMap[props.type]}</div>
