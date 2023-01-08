@@ -3,6 +3,7 @@ import Head from 'next/head';
 import {
   Auth,
   LeftAside,
+  RightAside,
   Overlay,
   PromptList,
   PromptItem,
@@ -53,7 +54,7 @@ const PageLayout = ({
 
         <main className="paddings col-span-7 bg-gray-100">{children}</main>
 
-        <aside className="paddings col-span-3 bg-white">Right Aside</aside>
+        <RightAside />
       </div>
       <AnimatePresence>
         {isAuthActive && (

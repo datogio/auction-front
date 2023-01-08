@@ -6,6 +6,7 @@ export { default as NavItem } from './navigation/NavItem';
 export { default as ListinCard } from './listing/ListingCard';
 export { default as Navigation } from './navigation/Navigation';
 export { default as LeftAside } from './leftAside/LeftAside';
+export { default as RightAside } from './rightAside/RightAside';
 export { default as Auth } from './auth/Auth';
 export { default as SignIn } from './auth/SignIn';
 export { default as SignUp } from './auth/SignUp';

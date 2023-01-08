@@ -1,4 +1,10 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import { RootState } from '.';
 import * as api from '../services/api';
 
 export const setAllCategories = createAsyncThunk(
@@ -11,6 +17,11 @@ export const setAllCategories = createAsyncThunk(
       })
       .catch((err) => console.log(err.message));
   }
+);
+
+export const selectAllCategories = createSelector(
+  ({ categories: state }: RootState) => state.categories,
+  (categories) => categories
 );
 
 interface IState {
