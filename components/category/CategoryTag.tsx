@@ -19,7 +19,7 @@ const CategoryTag = (props: CategoryTagProps) => {
       onClick={onClick}
       className={`${
         props.active
-          ? 'bg-gray-400 text-white'
+          ? 'bg-gray-400 text-white cursor-default'
           : 'bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl'
       } transition rounded py-1 px-4`}
     >
