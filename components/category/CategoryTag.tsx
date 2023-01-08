@@ -1,6 +1,6 @@
 export interface CategoryTagProps {
-  active: boolean;
   title: string;
+  active?: boolean;
 }
 
 const CategoryTag = (props: CategoryTagProps) => {
@@ -9,8 +9,8 @@ const CategoryTag = (props: CategoryTagProps) => {
       className={`${
         props.active
           ? 'bg-gray-400 text-white'
-          : 'bg-gray-200 cursor-pointer shadow-lg'
-      } transition rounded p-2`}
+          : 'bg-gray-200 cursor-pointer shadow-lg hover:bg-gray-100'
+      } transition rounded py-1 px-4`}
     >
       {props.title}
     </div>
