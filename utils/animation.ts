@@ -33,4 +33,7 @@ export const promptAnimation = {
       bounce: 0.6,
     },
   },
+  exit: {
+    scale: 0,
+  },
 };

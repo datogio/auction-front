@@ -29,11 +29,19 @@ const SignIn = (props: SignInProps) => {
   const onButtonCLick: MouseEventHandler<HTMLButtonElement> = () => {
     if (!inputs.email)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'Email is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Email is required',
+        })
       );
     if (!inputs.password)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'Password is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Password is required',
+        })
       );
 
     dispatch(

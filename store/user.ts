@@ -29,6 +29,7 @@ export const signOut = createAsyncThunk(
         dispatch(set(null));
         dispatch(
           promptActions.add({
+            id: Math.random(),
             type: 'notification',
             message: 'Successfuly signed out',
           })
@@ -36,7 +37,13 @@ export const signOut = createAsyncThunk(
         Router.push('/');
       })
       .catch((err) =>
-        dispatch(promptActions.add({ type: 'error', message: err.message }))
+        dispatch(
+          promptActions.add({
+            id: Math.random(),
+            type: 'error',
+            message: err.message,
+          })
+        )
       );
   }
 );
@@ -74,7 +81,11 @@ export const signUp = createAsyncThunk(
         dispatch(set(user));
         dispatch(
           promptActions.set([
-            { type: 'notification', message: `Welcome ${user.firstName}` },
+            {
+              id: Math.random(),
+              type: 'notification',
+              message: `Welcome ${user.firstName}`,
+            },
           ])
         );
         setInputs({
@@ -89,6 +100,7 @@ export const signUp = createAsyncThunk(
       .catch(() =>
         dispatch(
           promptActions.add({
+            id: Math.random(),
             type: 'error',
             message: 'Email is taken by another user',
           })
@@ -122,7 +134,11 @@ export const signIn = createAsyncThunk(
         dispatch(set(user));
         dispatch(
           promptActions.set([
-            { type: 'notification', message: `Welcome ${user.firstName}` },
+            {
+              id: Math.random(),
+              type: 'notification',
+              message: `Welcome ${user.firstName}`,
+            },
           ])
         );
         setInputs({ email: '', password: '' });
@@ -130,6 +146,7 @@ export const signIn = createAsyncThunk(
       .catch(() =>
         dispatch(
           promptActions.add({
+            id: Math.random(),
             type: 'error',
             message: 'Invalid email or password',
           })

@@ -7,9 +7,7 @@ import { motion } from 'framer-motion';
 import * as promptActions from '../../store/prompt';
 import { promptAnimation } from '../../utils/animation';
 
-export interface PromptItemProps extends prompts.Model {
-  index: number;
-}
+export type PromptItemProps = prompts.Model;
 
 const colorsMap: Record<PromptItemProps['type'], string> = {
   error: 'bg-red-200',
@@ -25,7 +23,7 @@ const PromptItem = (props: PromptItemProps) => {
   const dispatch: Dispatch<any> = useDispatch();
 
   const onTimesClick = () => {
-    dispatch(promptActions.remove(props.index));
+    dispatch(promptActions.remove(props.id));
   };
 
   return (

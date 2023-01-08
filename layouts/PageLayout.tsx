@@ -70,14 +70,16 @@ const PageLayout = ({
       </AnimatePresence>
       {prompts.length > 0 && (
         <PromptList>
-          {prompts.map((prompt, index) => (
-            <PromptItem
-              key={index}
-              type={prompt.type}
-              message={prompt.message}
-              index={index}
-            />
-          ))}
+          <AnimatePresence>
+            {prompts.map((prompt) => (
+              <PromptItem
+                key={prompt.id}
+                id={prompt.id}
+                type={prompt.type}
+                message={prompt.message}
+              />
+            ))}
+          </AnimatePresence>
         </PromptList>
       )}
     </div>

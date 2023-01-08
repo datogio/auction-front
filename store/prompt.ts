@@ -26,7 +26,9 @@ export const promptSlice = createSlice({
       state.prompts = [...state.prompts, action.payload];
     },
     remove: (state: IState, action: PayloadAction<number>) => {
-      state.prompts.splice(action.payload, 1);
+      state.prompts = state.prompts.filter(
+        (prompt) => prompt.id !== action.payload
+      );
     },
   },
 });

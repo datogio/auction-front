@@ -40,41 +40,67 @@ const SignUp = (props: SignUpProps) => {
   const onButtonCLick: MouseEventHandler<HTMLButtonElement> = () => {
     if (!inputs.firstName)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'First name is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'First name is required',
+        })
       );
     if (!inputs.lastName)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'Last name is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Last name is required',
+        })
       );
     if (!inputs.email)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'Email is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Email is required',
+        })
       );
     if (!inputs.confirmEmail)
       return dispatch(
         promptActions.add({
+          id: Math.random(),
           type: 'error',
           message: 'Email confirmation is require',
         })
       );
     if (!inputs.password)
       return dispatch(
-        promptActions.add({ type: 'error', message: 'Password is required' })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Password is required',
+        })
       );
     if (!inputs.confirmPassword)
       return dispatch(
         promptActions.add({
+          id: Math.random(),
           type: 'error',
           message: 'Password confirmation is required',
         })
       );
     if (inputs.email !== inputs.confirmEmail)
       return dispatch(
-        promptActions.add({ type: 'error', message: "Emails don't match" })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: "Emails don't match",
+        })
       );
     if (inputs.password !== inputs.confirmPassword)
       return dispatch(
-        promptActions.add({ type: 'error', message: "Passwords don't match" })
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: "Passwords don't match",
+        })
       );
 
     dispatch(
