@@ -25,6 +25,7 @@ const LeftAside = (props: LeftAsideProps) => {
     <aside className="col-span-2 paddings bg-white flex flex-col justify-between">
       <div className="space-y-10">
         <h1 className="text-3xl font-bold">Logo</h1>
+        <hr />
         <Navigation>
           <NavItem
             href="/"
@@ -71,7 +72,8 @@ const LeftAside = (props: LeftAsideProps) => {
         </Navigation>
       </div>
       {user ? (
-        <div onClick={handleSignOut} className="cursor-pointer">
+        <div onClick={handleSignOut} className="cursor-pointer space-y-5">
+          <hr />
           <Identity
             firstName={user.firstName}
             lastName={user.lastName}
@@ -80,7 +82,10 @@ const LeftAside = (props: LeftAsideProps) => {
           />
         </div>
       ) : (
-        <Button value="Sign In / SignUp" onClick={onAuthClick} />
+        <div className="space-y-5">
+          <hr />
+          <Button value="Sign In / SignUp" onClick={onAuthClick} />
+        </div>
       )}
     </aside>
   );
