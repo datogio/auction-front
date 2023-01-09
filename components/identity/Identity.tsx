@@ -17,6 +17,7 @@ const Identity = (props: IdentityProps) => {
         size="md"
       />
       <IdentityDetails
+        size="md"
         headline={`${props.firstName} ${props.lastName}`}
         details={props.details}
       />
