@@ -69,12 +69,13 @@ const SignIn = (props: SignInProps) => {
           name="email"
           value={inputs.email}
           onChange={onInputChange}
-          autofocus
+          focus="on"
         />
         <Input
           name="password"
           value={inputs.password}
           onChange={onInputChange}
+          focus="off"
         />
         <Button value="Sign In" onClick={onButtonCLick} />
       </form>

@@ -10,7 +10,7 @@ interface InputProps {
     | 'confirmPassword';
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  autofocus?: boolean;
+  focus: 'on' | 'off';
 }
 
 const typesMap: Record<InputProps['name'], 'text' | 'email' | 'password'> = {
@@ -43,8 +43,8 @@ const Input = (props: InputProps) => {
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    props.autofocus && ref.current?.focus();
-  }, [props.autofocus]);
+    props.focus === 'on' && ref.current?.focus();
+  }, [props.focus]);
 
   return (
     <input

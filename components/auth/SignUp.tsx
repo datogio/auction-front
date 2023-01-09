@@ -130,28 +130,37 @@ const SignUp = (props: SignUpProps) => {
           name="firstName"
           value={inputs.firstName}
           onChange={onInputChange}
-          autofocus
+          focus="on"
         />
         <Input
           name="lastName"
           value={inputs.lastName}
           onChange={onInputChange}
+          focus="off"
         />
-        <Input name="email" value={inputs.email} onChange={onInputChange} />
+        <Input
+          name="email"
+          value={inputs.email}
+          onChange={onInputChange}
+          focus="off"
+        />
         <Input
           name="confirmEmail"
           value={inputs.confirmEmail}
           onChange={onInputChange}
+          focus="off"
         />
         <Input
           name="password"
           value={inputs.password}
           onChange={onInputChange}
+          focus="off"
         />
         <Input
           name="confirmPassword"
           value={inputs.confirmPassword}
           onChange={onInputChange}
+          focus="off"
         />
         <Button value="Sign Up" onClick={onButtonCLick} />
       </form>
