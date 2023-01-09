@@ -21,7 +21,11 @@ const ListingCard = (props: ListingCardProps) => {
             alt="Listing Image"
           />
         </div>
-        <IdentityDetails headline={props.title} details={props.details} />
+        <IdentityDetails
+          size="md"
+          headline={props.title}
+          details={props.details}
+        />
       </a>
     </Link>
   );
