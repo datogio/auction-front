@@ -22,11 +22,7 @@ interface PageLayoutProps {
   children: ReactNode;
 }
 
-const PageLayout = ({
-  pageTitle,
-  pageDescription,
-  children,
-}: PageLayoutProps) => {
+const PageLayout = (props: PageLayoutProps) => {
   const dispatch: Dispatch<any> = useDispatch();
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
   const [isAddListingActive, setIsAddListingActive] = useState<boolean>(false);
@@ -52,14 +48,17 @@ const PageLayout = ({
   return (
     <div className="bg-gray-300 p-5 h-screen">
       <Head>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
+        <title>{props.pageTitle}</title>
+        <meta name="description" content={props.pageDescription} />
       </Head>
 
       <div className="grid grid-cols-12 h-[100%] rounded-3xl overflow-hidden shadow-lg">
         <LeftAside onAuthButtonClick={handleAuthActivation} />
 
-        <main className="paddings col-span-7 bg-gray-100">{children}</main>
+        <main className="paddings col-span-7 bg-gray-100">
+          <h1 className="text-3xl font-bold">{props.pageTitle}</h1>
+          <div>{props.children}</div>
+        </main>
 
         <RightAside onAddListingClick={handleAddListingActivation} />
       </div>
