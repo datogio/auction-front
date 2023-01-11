@@ -14,7 +14,7 @@ const RightAside = (props: RightAsideProps) => {
   return (
     <aside className="paddings col-span-3 bg-white flex flex-col justify-between">
       <div>{router.pathname === '/store' && <Categories />}</div>
-      {user && (
+      {user && router.pathname === '/store' && (
         <div>
           <Button
             icon="add"
