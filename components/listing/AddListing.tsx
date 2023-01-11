@@ -10,6 +10,8 @@ import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
 import * as categoryActions from '../../store/category';
 import * as promptActions from '../../store/prompt';
+import * as userActions from '../../store/user';
+import * as listingActions from '../../store/listing';
 
 interface AddListingProps {
   deactivateOverlay: () => void;
@@ -17,6 +19,7 @@ interface AddListingProps {
 
 const AddListing = (props: AddListingProps) => {
   const dispatch: Dispatch<any> = useDispatch();
+  const user = useSelector(userActions.selectUser);
   const categories = useSelector(categoryActions.selectAllCategories);
   const [inputs, setInputs] = useState<{
     listingTitle: string;
@@ -29,9 +32,17 @@ const AddListing = (props: AddListingProps) => {
     startingPrice: '',
     category: '',
   });
+  const [images, setImages] = useState<FileList | undefined | null>(null);
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+    setInputs((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const onImageChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setImages(event.target.files);
   };
 
   const onSelectChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
@@ -63,6 +74,14 @@ const AddListing = (props: AddListingProps) => {
           message: 'Listing starting price is required',
         })
       );
+    if (!images)
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Listing image is required',
+        })
+      );
     if (!inputs.category)
       return dispatch(
         promptActions.add({
@@ -73,12 +92,24 @@ const AddListing = (props: AddListingProps) => {
       );
 
     props.deactivateOverlay();
+    user &&
+      dispatch(
+        listingActions.createListing({
+          title: inputs.listingTitle,
+          description: inputs.listingDescription,
+          startingPrice: parseInt(inputs.startingPrice),
+          categoryId: inputs.category,
+          listingImage: images[0],
+          owner: user?.email,
+        })
+      );
     setInputs({
       listingTitle: '',
       listingDescription: '',
       startingPrice: '',
       category: '',
     });
+    setImages(null);
     dispatch(
       promptActions.add({
         id: Math.random(),
@@ -110,6 +141,7 @@ const AddListing = (props: AddListingProps) => {
           value={inputs.startingPrice}
           onChange={onInputChange}
         />
+        <Input focus="off" name="image" onChange={onImageChange} />
         <Select
           value={inputs.category}
           type="Category"
