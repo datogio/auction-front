@@ -7,6 +7,7 @@ import {
   Overlay,
   PromptList,
   PromptItem,
+  CloseOverlay,
 } from '../components';
 import { FaTimes } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
@@ -28,6 +29,7 @@ const PageLayout = ({
 }: PageLayoutProps) => {
   const dispatch: Dispatch<any> = useDispatch();
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
+  const [isAddListingActive, setIsAddListingActive] = useState<boolean>(false);
   const user = useSelector(userActions.selectUser);
   const prompts = useSelector(promptActions.selectAllPrompts);
 
@@ -42,6 +44,11 @@ const PageLayout = ({
     setIsAuthActive((prev) => !prev);
   };
 
+  const handleAddListingActivation = () => {
+    dispatch(promptActions.set([]));
+    setIsAddListingActive((prev) => !prev);
+  };
+
   return (
     <div className="bg-gray-300 p-5 h-screen">
       <Head>
@@ -54,20 +61,22 @@ const PageLayout = ({
 
         <main className="paddings col-span-7 bg-gray-100">{children}</main>
 
-        <RightAside />
+        <RightAside onAddListingClick={handleAddListingActivation} />
       </div>
       <AnimatePresence>
         {isAuthActive && (
           <Overlay>
-            <div className="flex justify-end p-5">
-              <FaTimes
-                className="text-white text-4xl cursor-pointer"
-                onClick={handleAuthActivation}
-              />
-            </div>
+            <CloseOverlay onClick={handleAuthActivation} />
             <div className="h-[80%] flex justify-center items-center">
               <Auth />
             </div>
+          </Overlay>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {isAddListingActive && (
+          <Overlay>
+            <CloseOverlay onClick={handleAddListingActivation} />
           </Overlay>
         )}
       </AnimatePresence>

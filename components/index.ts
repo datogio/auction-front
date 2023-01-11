@@ -18,3 +18,4 @@ export { default as PromptItem } from './prompt/PromptItem';
 export { default as PromptList } from './prompt/PromptList';
 export { default as CategoryTag } from './category/CategoryTag';
 export { default as Categories } from './category/Categories';
+export { default as CloseOverlay } from './overlay/CloseOverlay';
