@@ -97,10 +97,10 @@ const AddListing = (props: AddListingProps) => {
         listingActions.createListing({
           title: inputs.listingTitle,
           description: inputs.listingDescription,
-          startingPrice: parseInt(inputs.startingPrice),
+          startingPrice: inputs.startingPrice,
           categoryId: inputs.category,
           listingImage: images[0],
-          owner: user?.email,
+          owner: user,
         })
       );
     setInputs({

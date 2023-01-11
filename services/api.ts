@@ -1,8 +1,39 @@
 import { API_URL, CLIENT_URL } from '../utils/urls';
 
 const headers = new Headers();
-headers.set('Accept', 'application/json');
-headers.set('Content-Type', 'application/json');
+
+export const createListing = (
+  title: string,
+  description: string,
+  startingPrice: string,
+  categoryId: string,
+  owner: user.Model,
+  listingImage: File
+) => {
+  return new Promise((resolve: (listing: listing.Model) => void, reject) => {
+    headers.set('Authorization', `Bearer ${owner.token}`);
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('startingPrice', startingPrice);
+    formData.append('categoryId', categoryId);
+    formData.append('listingImage', listingImage);
+    formData.append('owner', owner.email);
+    fetch(`${API_URL}/listing`, {
+      method: 'POST',
+      headers,
+      body: formData,
+    })
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        const { data: listing } = await resp.json();
+        resolve(listing);
+      })
+      .catch((err) => reject(err));
+  });
+};
 
 export const getAllCategories = () => {
   return new Promise(
@@ -36,6 +67,8 @@ export const getUser = () => {
 
 export const signOut = () => {
   return new Promise((resolve, reject) => {
+    headers.set('Accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
       method: 'POST',
       headers,
@@ -53,6 +86,8 @@ export const signOut = () => {
 
 export const signIn = (email: string, password: string) => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
+    headers.set('Accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
       method: 'POST',
       headers,
@@ -76,6 +111,8 @@ export const signUp = (
   password: string
 ) => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
+    headers.set('Accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
       method: 'POST',
       headers,

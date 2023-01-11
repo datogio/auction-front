@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import * as api from '../services/api';
+import * as promptActions from '../store/prompt';
 
 export const createListing = createAsyncThunk(
   'listing/createListing',
@@ -13,19 +15,34 @@ export const createListing = createAsyncThunk(
     }: {
       title: string;
       description: string;
-      startingPrice: number;
+      startingPrice: string;
       categoryId: string;
-      owner: string;
+      owner: user.Model;
       listingImage: File;
     },
     { dispatch }
   ) => {
-    console.log(title);
-    console.log(description);
-    console.log(startingPrice);
-    console.log(categoryId);
-    console.log(owner);
-    console.log(listingImage);
+    api
+      .createListing(
+        title,
+        description,
+        startingPrice,
+        categoryId,
+        owner,
+        listingImage
+      )
+      .then((listing) => {
+        console.log(listing);
+      })
+      .catch(() =>
+        dispatch(
+          promptActions.add({
+            id: Math.random(),
+            type: 'error',
+            message: 'Error creating listing',
+          })
+        )
+      );
   }
 );
 
