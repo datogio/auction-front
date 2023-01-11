@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Input, Select, Button } from '../../components';
+import { Input, Select, Button, AuthTitle } from '../../components';
 import { motion } from 'framer-motion';
 import { authAnimation } from '../../utils/animation';
 import * as categoryActions from '../../store/category';
@@ -77,32 +77,31 @@ const AddListing = () => {
   };
 
   return (
-    <motion.form
-      {...authAnimation}
-      onSubmit={(event) => event.preventDefault()}
-      className="form"
-    >
-      <Input
-        focus="on"
-        name="listingTitle"
-        value={inputs.listingTitle}
-        onChange={onInputChange}
-      />
-      <Input
-        focus="off"
-        name="listingDescription"
-        value={inputs.listingDescription}
-        onChange={onInputChange}
-      />
-      <Input
-        focus="off"
-        name="startingPrice"
-        value={inputs.startingPrice}
-        onChange={onInputChange}
-      />
-      <Select type="Category" items={categories} onChange={onSelectChange} />
-      <Button icon="none" value="Save" onClick={onButtonClick} />
-    </motion.form>
+    <motion.div {...authAnimation} className="space-y-5">
+      <AuthTitle title="New Listing" />
+      <form onSubmit={(event) => event.preventDefault()} className="form">
+        <Input
+          focus="on"
+          name="listingTitle"
+          value={inputs.listingTitle}
+          onChange={onInputChange}
+        />
+        <Input
+          focus="off"
+          name="listingDescription"
+          value={inputs.listingDescription}
+          onChange={onInputChange}
+        />
+        <Input
+          focus="off"
+          name="startingPrice"
+          value={inputs.startingPrice}
+          onChange={onInputChange}
+        />
+        <Select type="Category" items={categories} onChange={onSelectChange} />
+        <Button icon="none" value="Save" onClick={onButtonClick} />
+      </form>
+    </motion.div>
   );
 };
 

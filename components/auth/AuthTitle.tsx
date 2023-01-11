@@ -1,5 +1,5 @@
 interface AuthTitleProps {
-  title: 'Sign In' | 'Sign Up';
+  title: 'Sign In' | 'Sign Up' | 'New Listing';
 }
 
 const AuthTitle = (props: AuthTitleProps) => {
