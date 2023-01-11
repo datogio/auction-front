@@ -77,7 +77,7 @@ const PageLayout = (props: PageLayoutProps) => {
           <Overlay>
             <CloseOverlay onClick={handleAddListingActivation} />
             <div className="h-[80%] flex justify-center items-center">
-              <AddListing />
+              <AddListing deactivateOverlay={handleAddListingActivation} />
             </div>
           </Overlay>
         )}

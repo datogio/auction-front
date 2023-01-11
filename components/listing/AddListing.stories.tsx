@@ -9,7 +9,7 @@ const story = {
 
 export const AddListing = () => (
   <Provider store={store}>
-    <AddListingComponent />
+    <AddListingComponent deactivateOverlay={() => alert('Listing submitted')} />
   </Provider>
 );
 

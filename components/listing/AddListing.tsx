@@ -11,7 +11,11 @@ import { authAnimation } from '../../utils/animation';
 import * as categoryActions from '../../store/category';
 import * as promptActions from '../../store/prompt';
 
-const AddListing = () => {
+interface AddListingProps {
+  deactivateOverlay: () => void;
+}
+
+const AddListing = (props: AddListingProps) => {
   const dispatch: Dispatch<any> = useDispatch();
   const categories = useSelector(categoryActions.selectAllCategories);
   const [inputs, setInputs] = useState<{
@@ -68,12 +72,20 @@ const AddListing = () => {
         })
       );
 
+    props.deactivateOverlay();
     setInputs({
       listingTitle: '',
       listingDescription: '',
       startingPrice: '',
       category: '',
     });
+    dispatch(
+      promptActions.add({
+        id: Math.random(),
+        type: 'notification',
+        message: 'New listing submitted',
+      })
+    );
   };
 
   return (
@@ -98,7 +110,12 @@ const AddListing = () => {
           value={inputs.startingPrice}
           onChange={onInputChange}
         />
-        <Select type="Category" items={categories} onChange={onSelectChange} />
+        <Select
+          value={inputs.category}
+          type="Category"
+          items={categories}
+          onChange={onSelectChange}
+        />
         <Button icon="none" value="Save" onClick={onButtonClick} />
       </form>
     </motion.div>

@@ -3,6 +3,7 @@ import { ChangeEventHandler } from 'react';
 export interface SelectProps {
   type: 'Category';
   items: category.Model[];
+  value: string;
   onChange: ChangeEventHandler<HTMLSelectElement>;
 }
 
@@ -13,8 +14,8 @@ const namesMap: Record<SelectProps['type'], string> = {
 const Select = (props: SelectProps) => {
   return (
     <select
-      defaultValue=""
       name={namesMap[props.type]}
+      value={props.value}
       onChange={props.onChange}
       className="w-[100%] text-center p-2 outline-blue-600 bg-gray-200 text-gray-400 text-lg rounded-lg border-2 border-gray-200"
     >

@@ -11,7 +11,7 @@ export type PromptItemProps = prompts.Model;
 
 const colorsMap: Record<PromptItemProps['type'], string> = {
   error: 'bg-red-100 text-red-600 border-red-600',
-  notification: 'bg-green-100 text-green-600 border-green-600',
+  notification: 'bg-green-100 text-green-700 border-green-700',
 };
 
 const iconsMap: Record<PromptItemProps['type'], ReactNode> = {
