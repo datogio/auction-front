@@ -8,8 +8,8 @@ import {
   PromptList,
   PromptItem,
   CloseOverlay,
+  AddListing,
 } from '../components';
-import { FaTimes } from 'react-icons/fa';
 import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../store/user';
@@ -76,6 +76,9 @@ const PageLayout = (props: PageLayoutProps) => {
         {isAddListingActive && (
           <Overlay>
             <CloseOverlay onClick={handleAddListingActivation} />
+            <div className="h-[80%] flex justify-center items-center">
+              <AddListing />
+            </div>
           </Overlay>
         )}
       </AnimatePresence>

@@ -7,7 +7,10 @@ interface InputProps {
     | 'email'
     | 'confirmEmail'
     | 'password'
-    | 'confirmPassword';
+    | 'confirmPassword'
+    | 'listingTitle'
+    | 'listingDescription'
+    | 'startingPrice';
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   focus: 'on' | 'off';
@@ -20,6 +23,9 @@ const typesMap: Record<InputProps['name'], 'text' | 'email' | 'password'> = {
   confirmEmail: 'email',
   password: 'password',
   confirmPassword: 'password',
+  listingTitle: 'text',
+  listingDescription: 'text',
+  startingPrice: 'text',
 };
 
 const placeholdersMap: Record<
@@ -30,6 +36,9 @@ const placeholdersMap: Record<
   | 'Confirm your email'
   | 'Enter your password'
   | 'Confirm your password'
+  | 'Enter listing title'
+  | 'Enter listing description'
+  | 'Enter starting price'
 > = {
   firstName: 'Enter your first name',
   lastName: 'Enter your last name',
@@ -37,6 +46,9 @@ const placeholdersMap: Record<
   confirmEmail: 'Confirm your email',
   password: 'Enter your password',
   confirmPassword: 'Confirm your password',
+  listingTitle: 'Enter listing title',
+  listingDescription: 'Enter listing description',
+  startingPrice: 'Enter starting price',
 };
 
 const Input = (props: InputProps) => {

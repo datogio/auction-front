@@ -61,10 +61,7 @@ const SignIn = (props: SignInProps) => {
   return (
     <motion.div {...authAnimation} className="space-y-5">
       <AuthTitle title="Sign In" />
-      <form
-        onSubmit={(event) => event.preventDefault()}
-        className="flex flex-col space-y-2"
-      >
+      <form onSubmit={(event) => event.preventDefault()} className="form">
         <Input
           name="email"
           value={inputs.email}
