@@ -6,7 +6,7 @@ const story = {
   component: IdentityDetailsComponent,
 };
 
-export const Identity = (args: IdentityDetailsProps) => (
+export const IdentityDetails = (args: IdentityDetailsProps) => (
   <IdentityDetailsComponent {...args} />
 );
 
@@ -16,6 +16,6 @@ const args: IdentityDetailsProps = {
   details: 'Test Details',
 };
 
-Identity.args = args;
+IdentityDetails.args = args;
 
 export default story;
