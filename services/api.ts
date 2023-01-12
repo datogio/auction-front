@@ -1,7 +1,5 @@
 import { API_URL, CLIENT_URL } from '../utils/urls';
 
-const headers = new Headers();
-
 export const getAllListings = () => {
   return new Promise((resolve: (listings: listing.Model[]) => void, reject) => {
     fetch(`${API_URL}/listing`)
@@ -25,6 +23,7 @@ export const createListing = (
   listingImage: File
 ) => {
   return new Promise((resolve: (listing: listing.Model) => void, reject) => {
+    const headers = new Headers();
     headers.set('Authorization', `Bearer ${owner.token}`);
     const formData = new FormData();
     formData.append('title', title);
@@ -81,6 +80,7 @@ export const getUser = () => {
 
 export const signOut = () => {
   return new Promise((resolve, reject) => {
+    const headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
@@ -100,6 +100,7 @@ export const signOut = () => {
 
 export const signIn = (email: string, password: string) => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
+    const headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
@@ -125,6 +126,7 @@ export const signUp = (
   password: string
 ) => {
   return new Promise((resolve: (user: user.Model) => void, reject) => {
+    const headers = new Headers();
     headers.set('Accept', 'application/json');
     headers.set('Content-Type', 'application/json');
     fetch(`${CLIENT_URL}/api/auth`, {
