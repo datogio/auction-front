@@ -91,7 +91,6 @@ const AddListing = (props: AddListingProps) => {
         })
       );
 
-    props.deactivateOverlay();
     user &&
       dispatch(
         listingActions.createListing({
@@ -101,22 +100,11 @@ const AddListing = (props: AddListingProps) => {
           categoryId: inputs.category,
           listingImage: images[0],
           owner: user,
+          setInputs,
+          setImages,
+          deactivateOverlay: props.deactivateOverlay,
         })
       );
-    setInputs({
-      listingTitle: '',
-      listingDescription: '',
-      startingPrice: '',
-      category: '',
-    });
-    setImages(null);
-    dispatch(
-      promptActions.add({
-        id: Math.random(),
-        type: 'notification',
-        message: 'New listing submitted',
-      })
-    );
   };
 
   return (

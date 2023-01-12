@@ -55,7 +55,7 @@ const PageLayout = (props: PageLayoutProps) => {
       <div className="grid grid-cols-12 h-[100%] rounded-3xl overflow-hidden shadow-lg">
         <LeftAside onAuthButtonClick={handleAuthActivation} />
 
-        <main className="paddings col-span-7 bg-gray-100">
+        <main className="paddings col-span-7 bg-gray-100 overflow-y-scroll">
           <h1 className="text-3xl font-bold">{props.pageTitle}</h1>
           <div>{props.children}</div>
         </main>

@@ -4,6 +4,7 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
+import { SetStateAction } from 'react';
 import { RootState } from '.';
 import * as api from '../services/api';
 import * as promptActions from '../store/prompt';
@@ -36,6 +37,9 @@ export const createListing = createAsyncThunk(
       categoryId,
       owner,
       listingImage,
+      setInputs,
+      setImages,
+      deactivateOverlay,
     }: {
       title: string;
       description: string;
@@ -43,6 +47,16 @@ export const createListing = createAsyncThunk(
       categoryId: string;
       owner: user.Model;
       listingImage: File;
+      setInputs: (
+        value: SetStateAction<{
+          listingTitle: string;
+          listingDescription: string;
+          startingPrice: string;
+          category: string;
+        }>
+      ) => void;
+      setImages: (value: SetStateAction<FileList | null | undefined>) => void;
+      deactivateOverlay: () => void;
     },
     { dispatch }
   ) => {
@@ -56,17 +70,33 @@ export const createListing = createAsyncThunk(
         listingImage
       )
       .then((listing) => {
+        deactivateOverlay();
         dispatch(add(listing));
+        dispatch(
+          promptActions.add({
+            id: Math.random(),
+            type: 'notification',
+            message: 'New listing submitted',
+          })
+        );
+        setInputs({
+          listingTitle: '',
+          listingDescription: '',
+          startingPrice: '',
+          category: '',
+        });
+        setImages(null);
       })
-      .catch(() =>
+      .catch((err) => {
+        console.log(err);
         dispatch(
           promptActions.add({
             id: Math.random(),
             type: 'error',
             message: 'Error creating listing',
           })
-        )
-      );
+        );
+      });
   }
 );
 
