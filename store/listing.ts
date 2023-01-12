@@ -56,7 +56,7 @@ export const createListing = createAsyncThunk(
         listingImage
       )
       .then((listing) => {
-        console.log(listing);
+        dispatch(add(listing));
       })
       .catch(() =>
         dispatch(
@@ -90,9 +90,12 @@ export const listingSlice = createSlice({
     set: (state: IState, action: PayloadAction<listing.Model[]>) => {
       state.listings = action.payload;
     },
+    add: (state: IState, action: PayloadAction<listing.Model>) => {
+      state.listings = [...state.listings, action.payload];
+    },
   },
 });
 
-export const { set } = listingSlice.actions;
+export const { set, add } = listingSlice.actions;
 
 export default listingSlice.reducer;
