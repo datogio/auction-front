@@ -1,4 +1,5 @@
 import { useState, useEffect, Dispatch, ReactNode } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
   Auth,
@@ -15,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as userActions from '../store/user';
 import * as promptActions from '../store/prompt';
 import * as categoryActions from '../store/category';
+import * as listingActions from '../store/listing';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -23,6 +25,7 @@ interface PageLayoutProps {
 }
 
 const PageLayout = (props: PageLayoutProps) => {
+  const router = useRouter();
   const dispatch: Dispatch<any> = useDispatch();
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
   const [isAddListingActive, setIsAddListingActive] = useState<boolean>(false);
@@ -32,7 +35,10 @@ const PageLayout = (props: PageLayoutProps) => {
   useEffect(() => {
     user && setIsAuthActive(false);
     !user && dispatch(userActions.setUser());
-    dispatch(categoryActions.setAllCategories());
+    if (router.pathname === '/store') {
+      dispatch(listingActions.setAllListings());
+      dispatch(categoryActions.setAllCategories());
+    }
   }, [dispatch, user]);
 
   const handleAuthActivation = () => {
