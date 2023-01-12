@@ -12,6 +12,7 @@ const args: ButtonProps = {
   icon: 'none',
   value: 'Button',
   onClick: () => alert('Button Clicked'),
+  disabled: false,
 };
 
 Button.args = args;

@@ -33,6 +33,7 @@ const AddListing = (props: AddListingProps) => {
     category: '',
   });
   const [images, setImages] = useState<FileList | undefined | null>(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setInputs((prev) => ({
@@ -91,6 +92,7 @@ const AddListing = (props: AddListingProps) => {
         })
       );
 
+    setIsButtonDisabled(true);
     user &&
       dispatch(
         listingActions.createListing({
@@ -136,7 +138,12 @@ const AddListing = (props: AddListingProps) => {
           items={categories}
           onChange={onSelectChange}
         />
-        <Button icon="none" value="Save" onClick={onButtonClick} />
+        <Button
+          icon="none"
+          value="Save"
+          onClick={onButtonClick}
+          disabled={isButtonDisabled}
+        />
       </form>
     </motion.div>
   );
