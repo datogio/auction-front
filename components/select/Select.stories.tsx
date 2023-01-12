@@ -10,6 +10,7 @@ export const Select = (args: SelectProps) => <SelectComponents {...args} />;
 
 const args: SelectProps = {
   type: 'Category',
+  value: '',
   items: [
     { _id: '1', title: 'First Category' },
     { _id: '2', title: 'Second Category' },
