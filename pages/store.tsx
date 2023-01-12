@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PageLayout } from '../layouts';
 import { ListinCard } from '../components';
 import * as listingActions from '../store/listing';
+import * as categoryActions from '../store/category';
+import { RootState } from '../store';
 
 const StorePage: NextPage = () => {
   const dispatch: Dispatch<any> = useDispatch();
+  const activeCategory = useSelector(categoryActions.selectActiveCategory);
+  const listings = useSelector((state: RootState) =>
+    listingActions.selectListings(state, activeCategory)
+  );
 
   useEffect(() => {
     dispatch(listingActions.setAllListings());
   }, [dispatch]);
-
-  const listings = useSelector(listingActions.selectListings);
 
   return (
     <PageLayout pageTitle="Store" pageDescription="Store page description">

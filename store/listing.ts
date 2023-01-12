@@ -102,7 +102,11 @@ export const createListing = createAsyncThunk(
 
 export const selectListings = createSelector(
   ({ listings: state }: RootState) => state.listings,
-  (listings) => listings
+  (_: RootState, activeCategory: category.Model | null) => activeCategory,
+  (listings, activeCategory) =>
+    listings.filter((listing) =>
+      activeCategory ? listing.category === activeCategory._id : listing
+    )
 );
 
 interface IState {
