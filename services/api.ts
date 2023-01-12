@@ -2,6 +2,20 @@ import { API_URL, CLIENT_URL } from '../utils/urls';
 
 const headers = new Headers();
 
+export const getAllListings = () => {
+  return new Promise((resolve: (listings: listing.Model[]) => void, reject) => {
+    fetch(`${API_URL}/listing`)
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        const { data: listings } = await resp.json();
+        resolve(listings);
+      })
+      .catch((err) => reject(err));
+  });
+};
+
 export const createListing = (
   title: string,
   description: string,

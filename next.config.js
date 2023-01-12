@@ -4,8 +4,8 @@ const nextConfig = {
     domains: [
       `localhost`,
       `vercel.app`,
-      // `decora-cms.s3.eu-central-1.amazonaws.com`,
-      // `framemasters.io`,
+      'toy-store-2021.s3.amazonaws.com',
+      'toy-store-2021.s3.eu-central-1.amazonaws.com',
     ],
   },
   reactStrictMode: true,

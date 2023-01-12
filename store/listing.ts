@@ -1,6 +1,30 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import { RootState } from '.';
 import * as api from '../services/api';
 import * as promptActions from '../store/prompt';
+
+export const setAllListings = createAsyncThunk(
+  'listing/setAllListings',
+  async ({}, { dispatch }) => {
+    api
+      .getAllListings()
+      .then((listings) => dispatch(set(listings)))
+      .catch(() =>
+        dispatch(
+          promptActions.add({
+            id: Math.random(),
+            type: 'error',
+            message: 'Error retrieving listings',
+          })
+        )
+      );
+  }
+);
 
 export const createListing = createAsyncThunk(
   'listing/createListing',
@@ -44,6 +68,11 @@ export const createListing = createAsyncThunk(
         )
       );
   }
+);
+
+export const selectListings = createSelector(
+  ({ listings: state }: RootState) => state.listings,
+  (listings) => listings
 );
 
 interface IState {
