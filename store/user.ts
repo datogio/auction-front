@@ -41,7 +41,7 @@ export const signOut = createAsyncThunk(
           promptActions.add({
             id: Math.random(),
             type: 'error',
-            message: err.message,
+            message: 'Failed to sign out',
           })
         )
       );
