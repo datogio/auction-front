@@ -1,7 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next';
 import { PageLayout } from '../../layouts';
 import { API_URL } from '../../utils/urls';
-import { Auction } from '../../components';
+import { Auction, ListingDetails, ListingDescription } from '../../components';
 
 interface ListingDetailPageProps {
   listing: listing.Model;
@@ -16,12 +16,8 @@ const ListingDetailPage: NextPage<ListingDetailPageProps> = (props) => {
       <div className="mt-10">
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-2 grid grid-rows-2 gap-5">
-            <div className="row-span-1 bg-white rounded-lg shadow-lg p-4">
-              Details
-            </div>
-            <article className="row-span-1 bg-white rounded-lg shadow-lg p-4">
-              {props.listing.description}
-            </article>
+            <ListingDetails />
+            <ListingDescription description={props.listing.description} />
           </div>
           <div className="col-span-1">
             <Auction

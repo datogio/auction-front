@@ -24,3 +24,5 @@ export { default as Select } from './select/Select';
 export { default as RightAsideForStore } from './rightAside/RightAsideForStore';
 export { default as Auction } from './listing/Auction';
 export { default as AuctionControlls } from './listing/AuctionControlls';
+export { default as ListingDetails } from './listing/ListingDetails';
+export { default as ListingDescription } from './listing/ListingDescription';

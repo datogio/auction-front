@@ -10,7 +10,7 @@ export interface AuctionProps {
 const Auction = (props: AuctionProps) => {
   return (
     <div className="space-y-3 bg-white p-4 rounded-lg shadow-lg">
-      <div className="text-center text-xs">AUCTION</div>
+      <div className="text-center text-xs font-bold">AUCTION</div>
       <div className="relative w-[100%] h-52 rounded-lg overflow-hidden">
         <Image
           src={props.image}
