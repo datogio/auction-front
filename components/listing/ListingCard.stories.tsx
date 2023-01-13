@@ -1,4 +1,4 @@
-import { ListinCard as ListingCardComponent } from '..';
+import { ListingCard as ListingCardComponent } from '..';
 import type { ListingCardProps } from './ListingCard';
 import fromImgToUrl from '../../__mocks__/fromImgToUrl';
 
