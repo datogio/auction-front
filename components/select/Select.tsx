@@ -17,7 +17,7 @@ const Select = (props: SelectProps) => {
       name={namesMap[props.type]}
       value={props.value}
       onChange={props.onChange}
-      className="w-[100%] cursor-pointer text-center p-2 bg-gray-200 text-gray-400 text-lg rounded-lg border-2 border-gray-200"
+      className="w-[100%] cursor-pointer text-center p-2 outline-none bg-gray-200 text-gray-400 text-lg rounded-lg border-2 border-gray-200"
     >
       <option value="" disabled>
         - Select {namesMap[props.type]} -
