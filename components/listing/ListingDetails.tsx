@@ -1,3 +1,5 @@
+import { TimeLeft } from '../../components';
+
 export interface ListingDetailsProps {
   startingPrice: string;
 }
@@ -13,7 +15,7 @@ const ListingDetails = (props: ListingDetailsProps) => {
         </div>
         <div className="col-span-1 space-y-1">
           <div className="text-xs text-gray-600">TIME LEFT</div>
-          <div className="text-xl font-bold">24 hours</div>
+          <TimeLeft miliSeconds={70000000} />
         </div>
         <div className="col-span-1 space-y-1">
           <div className="text-xs text-gray-600">HIGHEST BID</div>
