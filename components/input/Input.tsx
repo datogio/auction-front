@@ -67,7 +67,7 @@ const Input = (props: InputProps) => {
   }, [props.focus]);
 
   return (
-    <div>
+    <div className="w-[100%]">
       {props.name === 'image' && (
         <label htmlFor="upload" className="button cursor-pointer">
           {props.imagename}
@@ -82,7 +82,7 @@ const Input = (props: InputProps) => {
         id={`${props.name === 'image' && 'upload'}`}
         className={`${
           props.name === 'image' && 'hidden'
-        } p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg`}
+        } p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg w-[100%]`}
       />
     </div>
   );
