@@ -13,6 +13,7 @@ interface InputProps {
     | 'startingPrice'
     | 'image';
   value?: any;
+  imagename?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   focus: 'on' | 'off';
 }
@@ -66,14 +67,24 @@ const Input = (props: InputProps) => {
   }, [props.focus]);
 
   return (
-    <input
-      {...props}
-      ref={ref}
-      autoComplete="off"
-      type={typesMap[props.name]}
-      placeholder={placeholdersMap[props.name]}
-      className="p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg"
-    />
+    <div>
+      {props.name === 'image' && (
+        <label htmlFor="upload" className="button cursor-pointer">
+          {props.imagename}
+        </label>
+      )}
+      <input
+        {...props}
+        ref={ref}
+        autoComplete="off"
+        type={typesMap[props.name]}
+        placeholder={placeholdersMap[props.name]}
+        id={`${props.name === 'image' && 'upload'}`}
+        className={`${
+          props.name === 'image' && 'hidden'
+        } p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg`}
+      />
+    </div>
   );
 };
 

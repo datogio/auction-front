@@ -131,7 +131,12 @@ const AddListing = (props: AddListingProps) => {
           value={inputs.startingPrice}
           onChange={onInputChange}
         />
-        <Input focus="off" name="image" onChange={onImageChange} />
+        <Input
+          focus="off"
+          name="image"
+          imagename={images?.length ? images[0].name : 'Choose Image'}
+          onChange={onImageChange}
+        />
         <Select
           value={inputs.category}
           type="Category"

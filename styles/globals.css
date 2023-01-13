@@ -18,3 +18,7 @@
 .form {
     @apply flex flex-col space-y-2
 }
+
+.button {
+    @apply flex items-center justify-center space-x-2 bg-blue-600 text-white text-lg w-[100%] rounded-md py-2 shadow-lg transition duration-200 hover:bg-blue-700 active:shadow-none
+}
