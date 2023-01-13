@@ -1,11 +1,11 @@
 import { Dispatch, useEffect } from 'react';
 import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
-import { PageLayout } from '../layouts';
-import { ListingCard } from '../components';
-import * as listingActions from '../store/listing';
-import * as categoryActions from '../store/category';
-import { RootState } from '../store';
+import { PageLayout } from '../../layouts';
+import { ListingCard } from '../../components';
+import * as listingActions from '../../store/listing';
+import * as categoryActions from '../../store/category';
+import { RootState } from '../../store';
 
 const StorePage: NextPage = () => {
   const dispatch: Dispatch<any> = useDispatch();
