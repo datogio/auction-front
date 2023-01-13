@@ -18,7 +18,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-3">
       <Input
         name="bidAmount"
         focus="off"

@@ -23,7 +23,7 @@ const StorePage: NextPage = () => {
 
   return (
     <PageLayout pageTitle="Store" pageDescription="Store page description">
-      <div className="grid grid-cols-4 gap-5 bg-gray-100 mt-5">
+      <div className="grid grid-cols-4 gap-5 bg-gray-100 mt-10">
         {listings.map((listing) => (
           <ListingCard
             key={listing._id}
