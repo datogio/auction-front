@@ -11,9 +11,7 @@ const RightAsideForStore = (props: RightAsideForStoreProps) => {
 
   return (
     <div className="flex flex-col justify-between h-[100%]">
-      <div>
-        <Categories />
-      </div>
+      <Categories />
       {user && (
         <div>
           <Button
