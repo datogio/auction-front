@@ -16,8 +16,8 @@ const ListingDetailPage: NextPage<ListingDetailPageProps> = (props) => {
       <div className="mt-10">
         <div className="grid grid-cols-3 gap-5">
           <div className="col-span-2 grid grid-rows-2 gap-5">
-            <ListingDetails />
             <ListingDescription description={props.listing.description} />
+            <ListingDetails />
           </div>
           <div className="col-span-1">
             <Auction
