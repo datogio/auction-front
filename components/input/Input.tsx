@@ -1,4 +1,5 @@
 import { ChangeEventHandler, useEffect, useRef } from 'react';
+import { BiUpload } from 'react-icons/bi';
 
 interface InputProps {
   name:
@@ -70,7 +71,8 @@ const Input = (props: InputProps) => {
     <div className="w-[100%]">
       {props.name === 'image' && (
         <label htmlFor="upload" className="button cursor-pointer">
-          {props.imagename}
+          <BiUpload />
+          <div>{props.imagename}</div>
         </label>
       )}
       <input

@@ -134,7 +134,7 @@ const AddListing = (props: AddListingProps) => {
         <Input
           focus="off"
           name="image"
-          imagename={images?.length ? images[0].name : 'Choose Image'}
+          imagename={images?.length ? images[0].name : 'Upload Image'}
           onChange={onImageChange}
         />
         <Select
