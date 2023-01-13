@@ -12,7 +12,8 @@ interface InputProps {
     | 'listingTitle'
     | 'listingDescription'
     | 'startingPrice'
-    | 'image';
+    | 'image'
+    | 'bidAmount';
   value?: any;
   imagename?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
@@ -33,6 +34,7 @@ const typesMap: Record<
   listingDescription: 'text',
   startingPrice: 'text',
   image: 'file',
+  bidAmount: 'text',
 };
 
 const placeholdersMap: Record<
@@ -47,6 +49,7 @@ const placeholdersMap: Record<
   | 'Enter listing description'
   | 'Enter starting price'
   | 'Upload listing image'
+  | 'Enter bid amount'
 > = {
   firstName: 'Enter your first name',
   lastName: 'Enter your last name',
@@ -58,6 +61,7 @@ const placeholdersMap: Record<
   listingDescription: 'Enter listing description',
   startingPrice: 'Enter starting price',
   image: 'Upload listing image',
+  bidAmount: 'Enter bid amount',
 };
 
 const Input = (props: InputProps) => {
