@@ -63,12 +63,14 @@ const SignIn = (props: SignInProps) => {
       <AuthTitle title="Sign In" />
       <form onSubmit={(event) => event.preventDefault()} className="form">
         <Input
+          icon="none"
           name="email"
           value={inputs.email}
           onChange={onInputChange}
           focus="on"
         />
         <Input
+          icon="none"
           name="password"
           value={inputs.password}
           onChange={onInputChange}

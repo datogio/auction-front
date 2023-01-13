@@ -124,36 +124,42 @@ const SignUp = (props: SignUpProps) => {
       <AuthTitle title="Sign Up" />
       <form onSubmit={(event) => event.preventDefault()} className="form">
         <Input
+          icon="none"
           name="firstName"
           value={inputs.firstName}
           onChange={onInputChange}
           focus="on"
         />
         <Input
+          icon="none"
           name="lastName"
           value={inputs.lastName}
           onChange={onInputChange}
           focus="off"
         />
         <Input
+          icon="none"
           name="email"
           value={inputs.email}
           onChange={onInputChange}
           focus="off"
         />
         <Input
+          icon="none"
           name="confirmEmail"
           value={inputs.confirmEmail}
           onChange={onInputChange}
           focus="off"
         />
         <Input
+          icon="none"
           name="password"
           value={inputs.password}
           onChange={onInputChange}
           focus="off"
         />
         <Input
+          icon="none"
           name="confirmPassword"
           value={inputs.confirmPassword}
           onChange={onInputChange}

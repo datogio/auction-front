@@ -114,24 +114,28 @@ const AddListing = (props: AddListingProps) => {
       <AuthTitle title="New Listing" />
       <form onSubmit={(event) => event.preventDefault()} className="form">
         <Input
+          icon="none"
           focus="on"
           name="listingTitle"
           value={inputs.listingTitle}
           onChange={onInputChange}
         />
         <Input
+          icon="none"
           focus="off"
           name="listingDescription"
           value={inputs.listingDescription}
           onChange={onInputChange}
         />
         <Input
+          icon="none"
           focus="off"
           name="startingPrice"
           value={inputs.startingPrice}
           onChange={onInputChange}
         />
         <Input
+          icon="none"
           focus="off"
           name="image"
           imagename={images?.length ? images[0].name : 'Upload Image'}

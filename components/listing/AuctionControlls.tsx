@@ -20,6 +20,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   return (
     <div className="space-y-3">
       <Input
+        icon="dollar"
         name="bidAmount"
         focus="off"
         value={inputValue}

@@ -1,5 +1,6 @@
-import { ChangeEventHandler, useEffect, useRef } from 'react';
+import { ChangeEventHandler, ReactNode, useEffect, useRef } from 'react';
 import { BiUpload } from 'react-icons/bi';
+import { TbCurrencyDollar } from 'react-icons/tb';
 
 interface InputProps {
   name:
@@ -14,11 +15,17 @@ interface InputProps {
     | 'startingPrice'
     | 'image'
     | 'bidAmount';
-  value?: any;
-  imagename?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
   focus: 'on' | 'off';
+  icon: 'none' | 'dollar';
+  value?: any;
+  imagename?: string;
 }
+
+const iconsMap: Record<InputProps['icon'], ReactNode> = {
+  none: null,
+  dollar: <TbCurrencyDollar className="text-2xl ml-2" />,
+};
 
 const typesMap: Record<
   InputProps['name'],
@@ -72,7 +79,8 @@ const Input = (props: InputProps) => {
   }, [props.focus]);
 
   return (
-    <div className="w-[100%]">
+    <div className="w-[100%] flex items-center bg-gray-200 rounded-lg">
+      {props.icon !== 'none' && iconsMap[props.icon]}
       {props.name === 'image' && (
         <label htmlFor="upload" className="button cursor-pointer">
           <BiUpload />
@@ -88,7 +96,7 @@ const Input = (props: InputProps) => {
         id={`${props.name === 'image' && 'upload'}`}
         className={`${
           props.name === 'image' && 'hidden'
-        } p-2 outline-blue-600 bg-gray-200 text-center text-lg rounded-lg w-[100%]`}
+        }  w-[100%] bg-transparent text-center text-lg outline-none p-2`}
       />
     </div>
   );

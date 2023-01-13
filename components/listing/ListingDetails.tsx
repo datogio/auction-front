@@ -19,7 +19,7 @@ const ListingDetails = (props: ListingDetailsProps) => {
         </div>
         <div className="col-span-1 space-y-1">
           <div className="text-xs text-gray-600">CURRENT PRICE</div>
-          <div className="text-xl font-bold">21000000</div>
+          <div className="text-xl font-bold">$ 21000000</div>
         </div>
       </div>
     </div>
