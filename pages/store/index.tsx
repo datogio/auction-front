@@ -17,7 +17,6 @@ const StorePage: NextPage = () => {
   useEffect(() => {
     return () => {
       dispatch(listingActions.set([]));
-      dispatch(categoryActions.setActive(null));
     };
   }, [dispatch]);
 
