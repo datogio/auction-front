@@ -27,7 +27,7 @@ const StorePage: NextPage = () => {
         {listings.map((listing) => (
           <ListingCard
             key={listing._id}
-            href="/"
+            href={`/store/${listing._id}`}
             title={listing.title}
             details={listing.description}
             image={listing.image}
