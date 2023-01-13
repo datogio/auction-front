@@ -37,7 +37,7 @@ const LeftAside = (props: LeftAsideProps) => {
             href="/store"
             icon="store"
             value="STORE"
-            active={router.pathname === '/store'}
+            active={router.pathname.includes('/store')}
           />
           {user && (
             <NavItem

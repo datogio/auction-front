@@ -10,7 +10,7 @@ const ListingDetailPage: NextPage<ListingDetailPageProps> = (props) => {
   return (
     <PageLayout
       pageTitle={props.listing.title}
-      pageDescription="Listing detail page description"
+      pageDescription={props.listing.description}
     >
       <div>{props.listing.description}</div>
     </PageLayout>
