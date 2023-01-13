@@ -1,7 +1,5 @@
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import { Categories, Button } from '../../components';
-import * as userActions from '../../store/user';
+import { RightAsideForStore } from '../../components';
 
 interface RightAsideProps {
   onAddListingClick: () => void;
@@ -9,19 +7,11 @@ interface RightAsideProps {
 
 const RightAside = (props: RightAsideProps) => {
   const router = useRouter();
-  const user = useSelector(userActions.selectUser);
 
   return (
-    <aside className="paddings col-span-3 bg-white flex flex-col justify-between">
-      <div>{router.pathname === '/store' && <Categories />}</div>
-      {user && router.pathname === '/store' && (
-        <div>
-          <Button
-            icon="add"
-            value="Add Listing"
-            onClick={props.onAddListingClick}
-          />
-        </div>
+    <aside className="paddings col-span-3 bg-white">
+      {router.pathname === '/store' && (
+        <RightAsideForStore onAddListingClick={props.onAddListingClick} />
       )}
     </aside>
   );

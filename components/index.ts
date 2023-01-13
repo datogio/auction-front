@@ -21,3 +21,4 @@ export { default as Categories } from './category/Categories';
 export { default as CloseOverlay } from './overlay/CloseOverlay';
 export { default as AddListing } from './listing/AddListing';
 export { default as Select } from './select/Select';
+export { default as RightAsideForStore } from './rightAside/RightAsideForStore';
