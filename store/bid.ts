@@ -54,10 +54,11 @@ export const setAllBids = createAsyncThunk(
   }
 );
 
-export const selectListingBids = createSelector(
+export const selectListingTopBids = createSelector(
   ({ bids: state }: RootState) => state.bids,
   (_: RootState, listingId: string) => listingId,
-  (bids, listingId) => bids.filter((bid) => bid.listing === listingId)
+  (bids, listingId) =>
+    bids.filter((bid) => bid.listing === listingId).splice(0, 4)
 );
 
 interface IState {
