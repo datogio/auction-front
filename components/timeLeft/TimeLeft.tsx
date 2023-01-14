@@ -1,11 +1,17 @@
 import moment from 'moment';
+import { useState, memo } from 'react';
+import { useInterval } from '../../hooks';
 
 export interface TimeLeftProps {
   endDate: string;
 }
 
 const TimeLeft = (props: TimeLeftProps) => {
-  const now = moment();
+  const [now, setNow] = useState(moment());
+
+  useInterval(() => {
+    setNow(moment());
+  }, 1000);
 
   const millisecondsLeft = () => {
     const end = moment(props.endDate);
@@ -41,4 +47,4 @@ const TimeLeft = (props: TimeLeftProps) => {
   );
 };
 
-export default TimeLeft;
+export default memo(TimeLeft);
