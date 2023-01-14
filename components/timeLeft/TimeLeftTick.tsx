@@ -10,7 +10,7 @@ const colorsMap: Record<TimeLeftTickProps['type'], string> = {
 };
 
 const TimeLeftTick = (props: TimeLeftTickProps) => {
-  return <div className={`${colorsMap[props.type]} h-1 w-[1px]`} />;
+  return <div className={`${colorsMap[props.type]} h-2 w-[1px]`} />;
 };
 
 export default memo(TimeLeftTick);

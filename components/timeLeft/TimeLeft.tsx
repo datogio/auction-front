@@ -43,7 +43,7 @@ const TimeLeft = (props: TimeLeftProps) => {
           <TimeLeftTick key={index} type="passed" />
         ))}
       </div>
-      <div className="text-xs">{hoursLeft()}hr left</div>
+      <div className="text-xs text-gray-600">{hoursLeft()}hr left</div>
     </div>
   );
 };
