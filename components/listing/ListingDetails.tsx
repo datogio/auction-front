@@ -1,4 +1,7 @@
+import { useSelector } from 'react-redux';
 import { TimeLeft, ListingDetailsItem } from '../../components';
+import { RootState } from '../../store';
+import * as bidActions from '../../store/bid';
 
 export interface ListingDetailsProps {
   listingId: string;
@@ -7,6 +10,10 @@ export interface ListingDetailsProps {
 }
 
 const ListingDetails = (props: ListingDetailsProps) => {
+  const topBid = useSelector((state: RootState) =>
+    bidActions.selectListingsTopBid(state, props.listingId)
+  );
+
   return (
     <div className="row-span-1 bg-white rounded-lg shadow-lg p-4 space-y-2">
       <div className="text-sm font-bold">DETAILS</div>
@@ -20,7 +27,7 @@ const ListingDetails = (props: ListingDetailsProps) => {
         </ListingDetailsItem>
         <ListingDetailsItem
           type="current price"
-          value={`$ ${props.startingPrice}`}
+          value={`$ ${!topBid ? props.startingPrice : topBid.amount}`}
         />
       </div>
     </div>
