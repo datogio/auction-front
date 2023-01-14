@@ -27,3 +27,4 @@ export { default as AuctionControlls } from './listing/AuctionControlls';
 export { default as ListingDetails } from './listing/ListingDetails';
 export { default as ListingDescription } from './listing/ListingDescription';
 export { default as TimeLeft } from './timeLeft/TimeLeft';
+export { default as TimeLeftTick } from './timeLeft/TimeLeftTick';

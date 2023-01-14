@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { useState, memo } from 'react';
+import { TimeLeftTick } from '../../components';
 import { useInterval } from '../../hooks';
 
 export interface TimeLeftProps {
@@ -36,10 +37,10 @@ const TimeLeft = (props: TimeLeftProps) => {
     <div className="space-y-1 pt-1">
       <div className="flex bg-black w-[86px]">
         {[...Array(millisecondsLeft())].map((_, index) => (
-          <div key={index} className="bg-blue-600 h-1 w-[1px]" />
+          <TimeLeftTick key={index} type="left" />
         ))}
         {[...Array(millisecondsPassed())].map((_, index) => (
-          <div key={index} className="bg-gray-400 h-1 w-[1px]" />
+          <TimeLeftTick key={index} type="passed" />
         ))}
       </div>
       <div className="text-xs">{hoursLeft()}hr left</div>
