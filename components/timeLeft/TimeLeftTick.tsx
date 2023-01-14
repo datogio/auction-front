@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 interface TimeLeftTickProps {
   type: 'passed' | 'left';
 }
@@ -11,4 +13,4 @@ const TimeLeftTick = (props: TimeLeftTickProps) => {
   return <div className={`${colorsMap[props.type]} h-1 w-[1px]`} />;
 };
 
-export default TimeLeftTick;
+export default memo(TimeLeftTick);
