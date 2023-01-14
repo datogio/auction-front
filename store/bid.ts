@@ -20,7 +20,7 @@ export const createBid = createAsyncThunk(
           promptActions.add({
             id: Math.random(),
             type: 'notification',
-            message: 'Bid successfuly added',
+            message: 'Bid successfuly placed',
           })
         );
       })
@@ -29,7 +29,7 @@ export const createBid = createAsyncThunk(
           promptActions.add({
             id: Math.random(),
             type: 'error',
-            message: 'Error creating bid',
+            message: 'Error placing bid',
           })
         )
       );
