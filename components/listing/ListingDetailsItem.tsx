@@ -16,7 +16,7 @@ const ListingDetailsItem = (props: ListingDetailsItemProps) => {
   return (
     <div className="col-span-1 space-y-1">
       <div className="text-xs text-gray-600">{titlesMap[props.type]}</div>
-      <div className="text-xl font-bold">{props.value || props.children}</div>
+      <div className="text-xl">{props.value || props.children}</div>
     </div>
   );
 };
