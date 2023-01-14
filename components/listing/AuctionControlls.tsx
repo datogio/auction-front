@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button } from '../../components';
 import * as userActions from '../../store/user';
 import * as bidAcitons from '../../store/bid';
+import * as promptActions from '../../store/prompt';
 
 export interface AuctionControllsProps {
   listingId: string;
@@ -24,8 +25,22 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   };
 
   const onButtonClick: MouseEventHandler<HTMLButtonElement> = () => {
-    if (!inputValue) return alert('Bid amount is required');
-    if (!user) return alert('Unauthorizaed');
+    if (!inputValue)
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Bid amount is required',
+        })
+      );
+    if (!user)
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Sign in to place bid',
+        })
+      );
     dispatch(
       bidAcitons.createBid({
         amount: parseInt(inputValue),
