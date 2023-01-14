@@ -3,6 +3,6 @@ declare namespace bid {
     _id: string;
     amount: number;
     listing: string;
-    bidder: { firstName: string; lastName: string; image: string };
+    bidder: { _id: string; firstName: string; lastName: string; image: string };
   }
 }

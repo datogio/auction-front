@@ -78,6 +78,15 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         );
       }
     }
+    if (topBid && topBid.bidder._id === user?.id) {
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Your bid is winning',
+        })
+      );
+    }
     dispatch(
       bidAcitons.createBid({
         amount: parseInt(inputValue),
@@ -85,6 +94,14 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         listingId: props.listingId,
       })
     );
+  };
+
+  const getButtonValue = () => {
+    if (topBid && topBid.bidder._id === user?.id) {
+      return 'Winning Bid';
+    }
+
+    return 'Place Bid';
   };
 
   return (
@@ -96,7 +113,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         value={inputValue}
         onChange={onInputChange}
       />
-      <Button icon="none" value="Place Bid" onClick={onButtonClick} />
+      <Button icon="none" value={getButtonValue()} onClick={onButtonClick} />
     </div>
   );
 };
