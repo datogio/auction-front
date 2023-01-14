@@ -36,10 +36,10 @@ const TimeLeft = (props: TimeLeftProps) => {
     <div className="space-y-1 pt-1">
       <div className="flex bg-black w-[86px]">
         {[...Array(millisecondsLeft())].map((_, index) => (
-          <div key={index} className="bg-blue-600 h-1 w-[1px]"></div>
+          <div key={index} className="bg-blue-600 h-1 w-[1px]" />
         ))}
         {[...Array(millisecondsPassed())].map((_, index) => (
-          <div key={index} className="bg-gray-400 h-1 w-[1px]"></div>
+          <div key={index} className="bg-gray-400 h-1 w-[1px]" />
         ))}
       </div>
       <div className="text-xs">{hoursLeft()}hr left</div>
