@@ -1,10 +1,13 @@
 export interface TimeLeftProps {
-  miliSeconds: number;
+  hoursLeft: number;
+  milliSecondsLeft: number;
 }
 
 const TimeLeft = (props: TimeLeftProps) => {
   const miliSecondsPerDay = parseInt((86400000 / 1000000).toString());
-  const miliSecondsLeft = parseInt((props.miliSeconds / 1000000).toString());
+  const miliSecondsLeft = parseInt(
+    (props.milliSecondsLeft / 1000000).toString()
+  );
   const miliSecondsPassed = miliSecondsPerDay - miliSecondsLeft;
 
   return (
@@ -17,7 +20,7 @@ const TimeLeft = (props: TimeLeftProps) => {
           <div key={index} className="bg-gray-400 h-1 w-[1px]"></div>
         ))}
       </div>
-      <div className="text-xs">24hr left</div>
+      <div className="text-xs">{props.hoursLeft}hr left</div>
     </div>
   );
 };
