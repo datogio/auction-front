@@ -27,9 +27,9 @@ const RightAside = (props: RightAsideProps) => {
               key={bid._id}
               bidAmount={bid.amount}
               details="2 hours ago"
-              firstName="David"
-              lastName="Giorgadze"
-              image=""
+              firstName={bid.bidder.firstName}
+              lastName={bid.bidder.lastName}
+              image={bid.bidder.image}
             />
           ))}
         </div>

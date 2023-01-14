@@ -42,6 +42,9 @@ const PageLayout = (props: PageLayoutProps) => {
       dispatch(categoryActions.setAllCategories());
       dispatch(bidActions.setAllBids());
     }
+    if (router.pathname.includes('/store/')) {
+      dispatch(bidActions.setAllBids());
+    }
   }, [dispatch, user]);
 
   const handleAuthActivation = () => {
