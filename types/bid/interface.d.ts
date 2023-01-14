@@ -1,7 +1,8 @@
 declare namespace bid {
   interface Model {
+    _id: string;
     amount: number;
     listing: string;
-    bidder: string;
+    bidder: { firstName: string; lastName: string; image: string };
   }
 }

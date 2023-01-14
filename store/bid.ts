@@ -1,4 +1,10 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit';
+import { RootState } from '.';
 import * as api from '../services/api';
 import * as promptActions from '../store/prompt';
 
@@ -46,6 +52,12 @@ export const setAllBids = createAsyncThunk(
       })
       .catch((err) => console.log(err.message));
   }
+);
+
+export const selectListingBids = createSelector(
+  ({ bids: state }: RootState) => state.bids,
+  (_: RootState, listingId: string) => listingId,
+  (bids, listingId) => bids.filter((bid) => bid.listing === listingId)
 );
 
 interface IState {

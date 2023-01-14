@@ -12,6 +12,7 @@ const ListingDetailPage: NextPage<ListingDetailPageProps> = (props) => {
     <PageLayout
       pageTitle={props.listing.title}
       pageDescription={props.listing.description}
+      listingId={props.listing._id}
     >
       <div className="mt-10">
         <div className="grid grid-cols-3 gap-5">

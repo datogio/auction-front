@@ -23,6 +23,7 @@ interface PageLayoutProps {
   pageTitle: string;
   pageDescription: string;
   children: ReactNode;
+  listingId?: string;
 }
 
 const PageLayout = (props: PageLayoutProps) => {
@@ -68,7 +69,10 @@ const PageLayout = (props: PageLayoutProps) => {
           <div>{props.children}</div>
         </main>
 
-        <RightAside onAddListingClick={handleAddListingActivation} />
+        <RightAside
+          onAddListingClick={handleAddListingActivation}
+          listingId={props.listingId}
+        />
       </div>
       <AnimatePresence>
         {isAuthActive && (
