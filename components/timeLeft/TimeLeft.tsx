@@ -35,7 +35,7 @@ const TimeLeft = (props: TimeLeftProps) => {
 
   return (
     <div className="space-y-1 pt-1">
-      <div className="flex bg-black w-[86px]">
+      <div className="flex w-[86px] rounded overflow-hidden">
         {[...Array(millisecondsLeft())].map((_, index) => (
           <TimeLeftTick key={index} type="left" />
         ))}
