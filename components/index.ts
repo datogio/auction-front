@@ -29,3 +29,4 @@ export { default as ListingDescription } from './listing/ListingDescription';
 export { default as TimeLeft } from './timeLeft/TimeLeft';
 export { default as TimeLeftTick } from './timeLeft/TimeLeftTick';
 export { default as ListingDetailsItem } from './listing/ListingDetailsItem';
+export { default as Bid } from './bid/Bid';
