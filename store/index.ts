@@ -3,6 +3,7 @@ import userReducer from './user';
 import promptReducer from './prompt';
 import categoryReducer from './category';
 import listingReducer from './listing';
+import bidsReducer from './bid';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     prompts: promptReducer,
     categories: categoryReducer,
     listings: listingReducer,
+    bids: bidsReducer,
   },
   devTools: process.env.NODE_ENV != 'production',
 });

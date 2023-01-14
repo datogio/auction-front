@@ -1,5 +1,45 @@
 import { API_URL, CLIENT_URL } from '../utils/urls';
 
+export const createBid = (
+  amount: number,
+  bidder: user.Model,
+  listingId: string
+) => {
+  return new Promise((resolve: (bid: bid.Model) => void, reject) => {
+    const headers = new Headers();
+    headers.set('Accept', 'application/json');
+    headers.set('Content-Type', 'application/json');
+    headers.set('Authorization', `Bearer ${bidder.token}`);
+    fetch(`${API_URL}/bid`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ amount, userId: bidder.id, listingId }),
+    })
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        const { data: bid } = await resp.json();
+        resolve(bid);
+      })
+      .catch((err) => reject(err));
+  });
+};
+
+export const getAllBids = () => {
+  return new Promise((resolve: (bids: bid.Model[]) => void, reject) => {
+    fetch(`${API_URL}/bid`)
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        const { data: bids } = await resp.json();
+        resolve(bids);
+      })
+      .catch((err) => reject(err));
+  });
+};
+
 export const getAllListings = () => {
   return new Promise((resolve: (listings: listing.Model[]) => void, reject) => {
     fetch(`${API_URL}/listing`)

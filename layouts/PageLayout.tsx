@@ -17,6 +17,7 @@ import * as userActions from '../store/user';
 import * as promptActions from '../store/prompt';
 import * as categoryActions from '../store/category';
 import * as listingActions from '../store/listing';
+import * as bidActions from '../store/bid';
 
 interface PageLayoutProps {
   pageTitle: string;
@@ -38,6 +39,7 @@ const PageLayout = (props: PageLayoutProps) => {
     if (router.pathname === '/store') {
       dispatch(listingActions.setAllListings());
       dispatch(categoryActions.setAllCategories());
+      dispatch(bidActions.setAllBids());
     }
   }, [dispatch, user]);
 

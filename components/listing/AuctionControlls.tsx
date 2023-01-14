@@ -1,5 +1,13 @@
-import { ChangeEventHandler, MouseEventHandler, useState } from 'react';
+import {
+  ChangeEventHandler,
+  Dispatch,
+  MouseEventHandler,
+  useState,
+} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button } from '../../components';
+import * as userActions from '../../store/user';
+import * as bidAcitons from '../../store/bid';
 
 export interface AuctionControllsProps {
   listingId: string;
@@ -7,6 +15,8 @@ export interface AuctionControllsProps {
 }
 
 const AuctionControlls = (props: AuctionControllsProps) => {
+  const dispatch: Dispatch<any> = useDispatch();
+  const user = useSelector(userActions.selectUser);
   const [inputValue, setInputValue] = useState<string>(props.initialBidAmount);
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -14,7 +24,15 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   };
 
   const onButtonClick: MouseEventHandler<HTMLButtonElement> = () => {
-    alert(inputValue);
+    if (!inputValue) return alert('Bid amount is required');
+    if (!user) return alert('Unauthorizaed');
+    dispatch(
+      bidAcitons.createBid({
+        amount: parseInt(inputValue),
+        bidder: user,
+        listingId: props.listingId,
+      })
+    );
   };
 
   return (
