@@ -1,4 +1,4 @@
-import { TimeLeft } from '../../components';
+import { TimeLeft, ListingDetailsItem } from '../../components';
 
 export interface ListingDetailsProps {
   startingPrice: string;
@@ -10,18 +10,17 @@ const ListingDetails = (props: ListingDetailsProps) => {
     <div className="row-span-1 bg-white rounded-lg shadow-lg p-4 space-y-3">
       <div className="text-sm font-bold">DETAILS</div>
       <div className="grid grid-cols-3">
-        <div className="col-span-1 space-y-1">
-          <div className="text-xs text-gray-600">STARTING PRICE</div>
-          <div className="text-xl font-bold">$ {props.startingPrice}</div>
-        </div>
-        <div className="col-span-1 space-y-1">
-          <div className="text-xs text-gray-600">TIME LEFT</div>
+        <ListingDetailsItem
+          type="starting price"
+          value={`$ ${props.startingPrice}`}
+        />
+        <ListingDetailsItem type="time left">
           <TimeLeft endDate={props.endDate} />
-        </div>
-        <div className="col-span-1 space-y-1">
-          <div className="text-xs text-gray-600">CURRENT PRICE</div>
-          <div className="text-xl font-bold">$ {props.startingPrice}</div>
-        </div>
+        </ListingDetailsItem>
+        <ListingDetailsItem
+          type="current price"
+          value={`$ ${props.startingPrice}`}
+        />
       </div>
     </div>
   );
