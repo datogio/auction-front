@@ -1,6 +1,7 @@
 import { TimeLeft, ListingDetailsItem } from '../../components';
 
 export interface ListingDetailsProps {
+  listingId: string;
   startingPrice: string;
   endDate: string;
 }

@@ -61,6 +61,13 @@ export const selectListingTopBids = createSelector(
     bids.filter((bid) => bid.listing === listingId).splice(0, 4)
 );
 
+export const selectListingsTopBid = createSelector(
+  ({ bids: state }: RootState) => state.bids,
+  (_: RootState, listingId: string) => listingId,
+  (bids, listingId) =>
+    bids.filter((bid) => bid.listing === listingId).splice(0, 1)[0]
+);
+
 interface IState {
   bids: bid.Model[];
 }
