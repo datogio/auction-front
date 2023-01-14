@@ -60,7 +60,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
           promptActions.add({
             id: Math.random(),
             type: 'error',
-            message: `Place amount greated than ${topBid.amount}`,
+            message: `Place at least $${topBid.amount + 1} bid`,
           })
         );
       }
@@ -71,7 +71,9 @@ const AuctionControlls = (props: AuctionControllsProps) => {
           promptActions.add({
             id: Math.random(),
             type: 'error',
-            message: `Place amount greated than ${props.initialBidAmount}`,
+            message: `Place at least $${
+              parseInt(props.initialBidAmount) + 1
+            } bid`,
           })
         );
       }
