@@ -20,7 +20,8 @@ export const createListing = (
   startingPrice: string,
   categoryId: string,
   owner: user.Model,
-  listingImage: File
+  listingImage: File,
+  endDate: string
 ) => {
   return new Promise((resolve: (listing: listing.Model) => void, reject) => {
     const headers = new Headers();
@@ -30,8 +31,9 @@ export const createListing = (
     formData.append('description', description);
     formData.append('startingPrice', startingPrice);
     formData.append('categoryId', categoryId);
-    formData.append('listingImage', listingImage);
     formData.append('owner', owner.email);
+    formData.append('endDate', endDate);
+    formData.append('listingImage', listingImage);
     fetch(`${API_URL}/listing`, {
       method: 'POST',
       headers,

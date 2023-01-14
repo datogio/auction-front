@@ -37,6 +37,7 @@ export const createListing = createAsyncThunk(
       categoryId,
       owner,
       listingImage,
+      endDate,
       setInputs,
       setImages,
       deactivateOverlay,
@@ -47,6 +48,7 @@ export const createListing = createAsyncThunk(
       categoryId: string;
       owner: user.Model;
       listingImage: File;
+      endDate: string;
       setInputs: (
         value: SetStateAction<{
           listingTitle: string;
@@ -67,7 +69,8 @@ export const createListing = createAsyncThunk(
         startingPrice,
         categoryId,
         owner,
-        listingImage
+        listingImage,
+        endDate
       )
       .then((listing) => {
         deactivateOverlay();

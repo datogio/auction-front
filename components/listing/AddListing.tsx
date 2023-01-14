@@ -4,6 +4,7 @@ import {
   MouseEventHandler,
   useState,
 } from 'react';
+import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input, Select, Button, AuthTitle } from '../../components';
 import { motion } from 'framer-motion';
@@ -51,6 +52,8 @@ const AddListing = (props: AddListingProps) => {
   };
 
   const onButtonClick: MouseEventHandler<HTMLButtonElement> = () => {
+    const endDate = moment().add(24, 'hours').toLocaleString();
+
     if (!inputs.listingTitle)
       return dispatch(
         promptActions.add({
@@ -102,6 +105,7 @@ const AddListing = (props: AddListingProps) => {
           categoryId: inputs.category,
           listingImage: images[0],
           owner: user,
+          endDate,
           setInputs,
           setImages,
           deactivateOverlay: props.deactivateOverlay,

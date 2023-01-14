@@ -5,6 +5,7 @@ declare namespace listing {
     description: string;
     startingPrice: number;
     image: string;
+    endDate: string;
     category: string;
     owner: string;
   }
