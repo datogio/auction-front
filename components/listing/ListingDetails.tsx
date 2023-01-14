@@ -7,7 +7,7 @@ export interface ListingDetailsProps {
 
 const ListingDetails = (props: ListingDetailsProps) => {
   return (
-    <div className="row-span-1 bg-white rounded-lg shadow-lg p-4 space-y-3">
+    <div className="row-span-1 bg-white rounded-lg shadow-lg p-4 space-y-2">
       <div className="text-sm font-bold">DETAILS</div>
       <div className="grid grid-cols-3">
         <ListingDetailsItem
