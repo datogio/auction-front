@@ -31,3 +31,4 @@ export { default as TimeLeftTick } from './timeLeft/TimeLeftTick';
 export { default as ListingDetailsItem } from './listing/ListingDetailsItem';
 export { default as Bid } from './bid/Bid';
 export { default as Bids } from './bid/Bids';
+export { default as Confirm } from './confirm/Confirm';
