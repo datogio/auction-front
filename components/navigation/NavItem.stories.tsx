@@ -1,3 +1,5 @@
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 import { NavItem as NavItemComponent } from '..';
 import type { NavItemProps } from './NavItem';
 
@@ -6,7 +8,11 @@ const story = {
   component: NavItemComponent,
 };
 
-export const NavItem = (args: NavItemProps) => <NavItemComponent {...args} />;
+export const NavItem = (args: NavItemProps) => (
+  <Provider store={store}>
+    <NavItemComponent {...args} />
+  </Provider>
+);
 
 const args: NavItemProps = {
   href: '/',

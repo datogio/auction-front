@@ -1,3 +1,5 @@
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 import { ListingDetails as ListingDetailsComponent } from '../../components';
 import type { ListingDetailsProps } from './ListingDetails';
 
@@ -7,7 +9,9 @@ const story = {
 };
 
 export const ListingDetails = (args: ListingDetailsProps) => (
-  <ListingDetailsComponent {...args} />
+  <Provider store={store}>
+    <ListingDetailsComponent {...args} />
+  </Provider>
 );
 
 const args: ListingDetailsProps = {

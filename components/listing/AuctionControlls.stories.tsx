@@ -1,3 +1,5 @@
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 import { AuctionControlls as AuctionControllsComponent } from '../../components';
 import type { AuctionControllsProps } from './AuctionControlls';
 
@@ -7,7 +9,9 @@ const story = {
 };
 
 export const AuctionControlls = (args: AuctionControllsProps) => (
-  <AuctionControllsComponent {...args} />
+  <Provider store={store}>
+    <AuctionControllsComponent {...args} />
+  </Provider>
 );
 
 const args: AuctionControllsProps = {

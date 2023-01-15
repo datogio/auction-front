@@ -1,3 +1,5 @@
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 import { Auction as AuctionComponent } from '../../components';
 import fromImgToUrl from '../../__mocks__/fromImgToUrl';
 import type { AuctionProps } from './Auction';
@@ -7,7 +9,11 @@ const story = {
   component: AuctionComponent,
 };
 
-export const Auction = (args: AuctionProps) => <AuctionComponent {...args} />;
+export const Auction = (args: AuctionProps) => (
+  <Provider store={store}>
+    <AuctionComponent {...args} />
+  </Provider>
+);
 
 const args: AuctionProps = {
   listingId: '123',
