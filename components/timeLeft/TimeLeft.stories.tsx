@@ -11,7 +11,7 @@ export const TimeLeft = (args: TimeLeftProps) => (
 );
 
 const args: TimeLeftProps = {
-  miliSeconds: 2500,
+  endDate: '',
 };
 
 TimeLeft.args = args;

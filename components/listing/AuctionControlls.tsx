@@ -31,7 +31,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
     topBid
       ? setInputValue((topBid.amount + 1).toString())
       : setInputValue((parseInt(props.initialBidAmount) + 1).toString());
-  }, [topBid]);
+  }, [topBid, props.initialBidAmount]);
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setInputValue(event.target.value);
