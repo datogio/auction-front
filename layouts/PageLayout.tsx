@@ -1,4 +1,10 @@
-import { useState, useEffect, Dispatch, ReactNode } from 'react';
+import {
+  useState,
+  useEffect,
+  Dispatch,
+  ReactNode,
+  MouseEventHandler,
+} from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
@@ -29,6 +35,8 @@ interface PageLayoutProps {
 const PageLayout = (props: PageLayoutProps) => {
   const router = useRouter();
   const dispatch: Dispatch<any> = useDispatch();
+  const [isUserProfileAcvite, setIsUserProfileActive] =
+    useState<boolean>(false);
   const [isAuthActive, setIsAuthActive] = useState<boolean>(false);
   const [isAddListingActive, setIsAddListingActive] = useState<boolean>(false);
   const user = useSelector(userActions.selectUser);
@@ -47,6 +55,11 @@ const PageLayout = (props: PageLayoutProps) => {
     }
   }, [dispatch, user]);
 
+  const handleUserProfileActivation = () => {
+    dispatch(promptActions.set([]));
+    setIsUserProfileActive((prev) => !prev);
+  };
+
   const handleAuthActivation = () => {
     dispatch(promptActions.set([]));
     setIsAuthActive((prev) => !prev);
@@ -57,6 +70,11 @@ const PageLayout = (props: PageLayoutProps) => {
     setIsAddListingActive((prev) => !prev);
   };
 
+  const handleSignOut: MouseEventHandler<HTMLDivElement> = () => {
+    setIsUserProfileActive(false);
+    dispatch(userActions.signOut());
+  };
+
   return (
     <div className="bg-gray-300 p-5 h-screen">
       <Head>
@@ -65,7 +83,10 @@ const PageLayout = (props: PageLayoutProps) => {
       </Head>
 
       <div className="grid grid-cols-12 h-[100%] rounded-3xl overflow-hidden shadow-lg">
-        <LeftAside onAuthButtonClick={handleAuthActivation} />
+        <LeftAside
+          onAuthButtonClick={handleAuthActivation}
+          activateOverlay={handleUserProfileActivation}
+        />
 
         <main className="paddings col-span-7 bg-gray-100 overflow-y-scroll">
           <h1 className="text-3xl font-bold">{props.pageTitle}</h1>
@@ -77,6 +98,16 @@ const PageLayout = (props: PageLayoutProps) => {
           listingId={props.listingId}
         />
       </div>
+      <AnimatePresence>
+        {isUserProfileAcvite && (
+          <Overlay>
+            <CloseOverlay onClick={handleUserProfileActivation} />
+            <div className="text-white cursor-pointer" onClick={handleSignOut}>
+              User Profile
+            </div>
+          </Overlay>
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {isAuthActive && (
           <Overlay>
