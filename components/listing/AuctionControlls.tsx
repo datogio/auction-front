@@ -33,6 +33,23 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   };
 
   const toggleConfirmState = () => {
+    if (!user)
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Sign in to place bid',
+        })
+      );
+    if (topBid && topBid.bidder._id === user?.id) {
+      return dispatch(
+        promptActions.add({
+          id: Math.random(),
+          type: 'error',
+          message: 'Your bid is winning',
+        })
+      );
+    }
     setShowConfirm((prev) => !prev);
   };
 
@@ -43,14 +60,6 @@ const AuctionControlls = (props: AuctionControllsProps) => {
           id: Math.random(),
           type: 'error',
           message: 'Bid amount is required',
-        })
-      );
-    if (!user)
-      return dispatch(
-        promptActions.add({
-          id: Math.random(),
-          type: 'error',
-          message: 'Sign in to place bid',
         })
       );
     if (topBid) {
@@ -77,23 +86,16 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         );
       }
     }
-    if (topBid && topBid.bidder._id === user?.id) {
-      return dispatch(
-        promptActions.add({
-          id: Math.random(),
-          type: 'error',
-          message: 'Your bid is winning',
+
+    user &&
+      dispatch(
+        bidAcitons.createBid({
+          amount: parseInt(inputValue),
+          bidder: user,
+          listingId: props.listingId,
+          toggleConfirmState,
         })
       );
-    }
-    dispatch(
-      bidAcitons.createBid({
-        amount: parseInt(inputValue),
-        bidder: user,
-        listingId: props.listingId,
-        toggleConfirmState,
-      })
-    );
   };
 
   const handleNoClick = () => {
