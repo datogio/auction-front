@@ -27,12 +27,11 @@ export const createBid = createAsyncThunk(
     api
       .createBid(amount, bidder, listingId)
       .then((bid) => {
-        dispatch(add(bid));
         dispatch(
           promptActions.add({
             id: Math.random(),
             type: 'notification',
-            message: 'Bid successfuly placed',
+            message: `Placed $${bid.amount} bid`,
           })
         );
         toggleConfirmState();
@@ -91,7 +90,10 @@ export const bidSlice = createSlice({
       state.bids = action.payload;
     },
     add: (state: IState, action: PayloadAction<bid.Model>) => {
-      state.bids = [action.payload, ...state.bids];
+      state.bids =
+        state.bids.filter((bid) => bid._id === action.payload._id).length === 0
+          ? [action.payload, ...state.bids]
+          : state.bids;
     },
   },
 });

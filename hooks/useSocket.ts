@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import type { Dispatch } from 'react';
 import { useDispatch } from 'react-redux';
 import socket from '../services/socket';
+import * as bidActions from '../store/bid';
 
 const useSocket = (listingId: string) => {
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {
     const handleDisconnect = () => {
-      //   socket.off("create_project");
+      socket.off('place_bid');
 
       socket.disconnect();
     };
@@ -16,12 +17,12 @@ const useSocket = (listingId: string) => {
     socket.connect();
     socket.emit('join_listing_room', listingId);
 
-    // socket.on("create_project", (project: project.IProject) => {
-    //   dispatch(projectActions.create(project));
-    // });
+    socket.on('place_bid', (bid: bid.Model) => {
+      dispatch(bidActions.add(bid));
+    });
 
     return () => handleDisconnect();
-  }, [listingId]);
+  }, [listingId, dispatch]);
 };
 
 export default useSocket;
