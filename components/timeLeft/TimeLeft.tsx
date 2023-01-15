@@ -35,14 +35,24 @@ const TimeLeft = (props: TimeLeftProps) => {
 
   return (
     <div className="space-y-1 pt-1">
-      <div className="flex w-[86px] rounded overflow-hidden">
-        {[...Array(millisecondsLeft())].map((_, index) => (
-          <TimeLeftTick key={index} type="left" />
-        ))}
-        {[...Array(millisecondsPassed())].map((_, index) => (
-          <TimeLeftTick key={index} type="passed" />
-        ))}
-      </div>
+      {millisecondsLeft() > 0 ? (
+        <div className="flex w-[86px] rounded overflow-hidden">
+          {[...Array(millisecondsLeft())].map((_, index) => (
+            <TimeLeftTick key={index} type="left" />
+          ))}
+          {[...Array(millisecondsPassed())].map((_, index) => (
+            <TimeLeftTick key={index} type="passed" />
+          ))}
+        </div>
+      ) : (
+        <div className="flex w-[86px] rounded overflow-hidden">
+          {[...Array(parseInt((86400000 / 1000000).toString()))].map(
+            (_, index) => (
+              <TimeLeftTick key={index} type="passed" />
+            )
+          )}
+        </div>
+      )}
       <div className="text-xs text-gray-600">{hoursLeft()}hr left</div>
     </div>
   );

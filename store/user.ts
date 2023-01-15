@@ -34,7 +34,13 @@ export const signOut = createAsyncThunk(
             message: 'Successfuly signed out',
           })
         );
-        Router.push('/');
+        if (
+          Router.pathname === '/saved' ||
+          Router.pathname === '/notifications' ||
+          Router.pathname === '/settings'
+        ) {
+          Router.push('/');
+        }
       })
       .catch((err) =>
         dispatch(
