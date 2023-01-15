@@ -11,7 +11,9 @@ export const ListingDetails = (args: ListingDetailsProps) => (
 );
 
 const args: ListingDetailsProps = {
-  startingPrice: '200',
+  endDate: '200000',
+  listingId: '083082',
+  startingPrice: '40000',
 };
 
 ListingDetails.args = args;
