@@ -29,6 +29,7 @@ const NavItem = (props: NavItemProps) => {
   const dispatch: Dispatch<any> = useDispatch();
 
   const onItemClick: MouseEventHandler<HTMLDivElement> = () => {
+    if (props.active) return;
     dispatch(promptActions.set([]));
     router.push(props.href);
   };
