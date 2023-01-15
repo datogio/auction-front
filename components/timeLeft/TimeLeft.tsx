@@ -32,25 +32,32 @@ const TimeLeft = (props: TimeLeftProps) => {
 
   const hoursLeft = () => {
     const hours = end.current.diff(now, 'hours');
-    return hours;
+    return hours > -1 ? hours : 0;
+  };
+
+  const getLeftTicks = () => {
+    return end.current.diff(now, 'milliseconds') > 0
+      ? [...Array(millisecondsLeft())].map((_, index) => (
+          <TimeLeftTick key={index} type="left" />
+        ))
+      : null;
+  };
+
+  const getPassedTicks = () => {
+    return [
+      ...Array(
+        end.current.diff(now, 'milliseconds') > 0
+          ? millisecondsPassed()
+          : parseInt((86400000 / 1000000).toString())
+      ),
+    ].map((_, index) => <TimeLeftTick key={index} type="passed" />);
   };
 
   return (
     <div className="space-y-1 pt-1">
       <div className="flex w-[86px] rounded overflow-hidden">
-        {end.current.diff(now, 'milliseconds') > 0 &&
-          [...Array(millisecondsLeft())].map((_, index) => (
-            <TimeLeftTick key={index} type="left" />
-          ))}
-        {[
-          ...Array(
-            end.current.diff(now, 'milliseconds') > 0
-              ? millisecondsPassed()
-              : parseInt((86400000 / 1000000).toString())
-          ),
-        ].map((_, index) => (
-          <TimeLeftTick key={index} type="passed" />
-        ))}
+        {getLeftTicks()}
+        {getPassedTicks()}
       </div>
       <div className="text-xs text-gray-600">{hoursLeft()}hr left</div>
     </div>
