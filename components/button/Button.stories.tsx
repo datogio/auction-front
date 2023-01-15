@@ -9,6 +9,7 @@ const story = {
 export const Button = (args: ButtonProps) => <ButtonComponent {...args} />;
 
 const args: ButtonProps = {
+  color: 'blue',
   icon: 'none',
   value: 'Button',
   onClick: () => alert('Button Clicked'),
