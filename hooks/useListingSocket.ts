@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import socket from '../services/socket';
 import * as bidActions from '../store/bid';
 
-const useSocket = (listingId: string) => {
+const useListingSocket = (listingId: string) => {
   const dispatch: Dispatch<any> = useDispatch();
 
   useEffect(() => {
@@ -25,4 +25,4 @@ const useSocket = (listingId: string) => {
   }, [listingId, dispatch]);
 };
 
-export default useSocket;
+export default useListingSocket;
