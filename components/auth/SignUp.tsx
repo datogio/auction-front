@@ -165,7 +165,12 @@ const SignUp = (props: SignUpProps) => {
           onChange={onInputChange}
           focus="off"
         />
-        <Button icon="none" value="Sign Up" onClick={onButtonCLick} />
+        <Button
+          color="blue"
+          icon="none"
+          value="Sign Up"
+          onClick={onButtonCLick}
+        />
       </form>
       <AuthStateSwitch value="Sign In" onCLick={onLinkClick} />
     </motion.div>

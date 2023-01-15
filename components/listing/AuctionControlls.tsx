@@ -1,12 +1,6 @@
-import {
-  ChangeEventHandler,
-  Dispatch,
-  MouseEventHandler,
-  useState,
-  useEffect,
-} from 'react';
+import { ChangeEventHandler, Dispatch, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Input, Button } from '../../components';
+import { Input, Button, Confirm } from '../../components';
 import * as userActions from '../../store/user';
 import * as bidAcitons from '../../store/bid';
 import * as promptActions from '../../store/prompt';
@@ -26,6 +20,7 @@ const AuctionControlls = (props: AuctionControllsProps) => {
   const [inputValue, setInputValue] = useState<string>(
     topBid ? topBid.amount.toString() : props.initialBidAmount
   );
+  const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   useEffect(() => {
     topBid
@@ -37,7 +32,11 @@ const AuctionControlls = (props: AuctionControllsProps) => {
     setInputValue(event.target.value);
   };
 
-  const onButtonClick: MouseEventHandler<HTMLButtonElement> = () => {
+  const toggleConfirmState = () => {
+    setShowConfirm((prev) => !prev);
+  };
+
+  const handlePlaceBid = () => {
     if (!inputValue)
       return dispatch(
         promptActions.add({
@@ -92,8 +91,13 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         amount: parseInt(inputValue),
         bidder: user,
         listingId: props.listingId,
+        toggleConfirmState,
       })
     );
+  };
+
+  const handleNoClick = () => {
+    toggleConfirmState();
   };
 
   const getButtonValue = () => {
@@ -113,7 +117,17 @@ const AuctionControlls = (props: AuctionControllsProps) => {
         value={inputValue}
         onChange={onInputChange}
       />
-      <Button icon="none" value={getButtonValue()} onClick={onButtonClick} />
+      {showConfirm && (
+        <Confirm onYesClick={handlePlaceBid} onNoClick={handleNoClick} />
+      )}
+      {!showConfirm && (
+        <Button
+          color="blue"
+          icon="none"
+          value={getButtonValue()}
+          onClick={toggleConfirmState}
+        />
+      )}
     </div>
   );
 };

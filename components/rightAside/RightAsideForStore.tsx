@@ -15,6 +15,7 @@ const RightAsideForStore = (props: RightAsideForStoreProps) => {
       {user && (
         <div>
           <Button
+            color="blue"
             icon="add"
             value="Add Listing"
             onClick={props.onAddListingClick}

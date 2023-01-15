@@ -152,6 +152,7 @@ const AddListing = (props: AddListingProps) => {
           onChange={onSelectChange}
         />
         <Button
+          color="blue"
           icon="none"
           value="Save"
           onClick={onButtonClick}

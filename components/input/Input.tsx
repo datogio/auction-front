@@ -82,7 +82,10 @@ const Input = (props: InputProps) => {
     <div className="w-[100%] flex items-center bg-gray-200 rounded-lg">
       {props.icon !== 'none' && iconsMap[props.icon]}
       {props.name === 'image' && (
-        <label htmlFor="upload" className="button cursor-pointer">
+        <label
+          htmlFor="upload"
+          className="button bg-blue-600 text-white cursor-pointer"
+        >
           <BiUpload />
           <div>{props.imagename}</div>
         </label>

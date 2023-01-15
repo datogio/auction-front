@@ -15,7 +15,13 @@ export const createBid = createAsyncThunk(
       amount,
       bidder,
       listingId,
-    }: { amount: number; bidder: user.Model; listingId: string },
+      toggleConfirmState,
+    }: {
+      amount: number;
+      bidder: user.Model;
+      listingId: string;
+      toggleConfirmState: () => void;
+    },
     { dispatch }
   ) => {
     api
@@ -29,6 +35,7 @@ export const createBid = createAsyncThunk(
             message: 'Bid successfuly placed',
           })
         );
+        toggleConfirmState();
       })
       .catch((err) =>
         dispatch(

@@ -18,7 +18,7 @@ const iconsMap: Record<ButtonProps['icon'], ReactNode> = {
 };
 
 const colorsMap: Record<ButtonProps['color'], ReactNode> = {
-  blue: 'bg-blue-600 text-white hover:bg-blue-700',
+  blue: 'bg-blue-600 text-white',
   white: 'bg-white text-blue-600',
 };
 

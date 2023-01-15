@@ -20,5 +20,5 @@
 }
 
 .button {
-    @apply flex items-center justify-center space-x-2 border border-blue-600 text-lg w-[100%] rounded-md py-2 shadow-lg transition duration-200 active:shadow-none
+    @apply flex items-center justify-center space-x-2 border border-blue-600 text-lg w-[100%] rounded-md py-2 shadow-lg transition duration-200 hover:opacity-80 active:shadow-none
 }

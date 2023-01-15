@@ -84,7 +84,12 @@ const LeftAside = (props: LeftAsideProps) => {
       ) : (
         <div className="space-y-5">
           <hr />
-          <Button icon="none" value="Sign In | Sign Up" onClick={onAuthClick} />
+          <Button
+            color="blue"
+            icon="none"
+            value="Sign In | Sign Up"
+            onClick={onAuthClick}
+          />
         </div>
       )}
     </aside>
