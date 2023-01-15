@@ -2,12 +2,15 @@ import { NextPage, GetServerSideProps } from 'next';
 import { PageLayout } from '../../layouts';
 import { API_URL } from '../../utils/urls';
 import { Auction, ListingDetails, ListingDescription } from '../../components';
+import { useSocket } from '../../hooks';
 
 interface ListingDetailPageProps {
   listing: listing.Model;
 }
 
 const ListingDetailPage: NextPage<ListingDetailPageProps> = (props) => {
+  useSocket(props.listing._id);
+
   return (
     <PageLayout
       pageTitle={props.listing.title}

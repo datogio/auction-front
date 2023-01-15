@@ -17,9 +17,8 @@ const Bids = (props: BidsProps) => {
       <h2 className="text-xl font-bold">Top Bids</h2>
       <div className="space-y-5">
         {bids.map((bid) => (
-          <>
+          <div key={bid._id} className="space-y-5">
             <Bid
-              key={bid._id}
               bidAmount={bid.amount}
               details="2 hours ago"
               firstName={bid.bidder.firstName}
@@ -27,7 +26,7 @@ const Bids = (props: BidsProps) => {
               image={bid.bidder.image}
             />
             <hr />
-          </>
+          </div>
         ))}
       </div>
     </div>
