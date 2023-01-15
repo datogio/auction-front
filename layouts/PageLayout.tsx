@@ -1,10 +1,4 @@
-import {
-  useState,
-  useEffect,
-  Dispatch,
-  ReactNode,
-  MouseEventHandler,
-} from 'react';
+import { useState, useEffect, Dispatch, ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import {
@@ -16,6 +10,7 @@ import {
   PromptItem,
   CloseOverlay,
   AddListing,
+  UserProfile,
 } from '../components';
 import { AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -70,7 +65,7 @@ const PageLayout = (props: PageLayoutProps) => {
     setIsAddListingActive((prev) => !prev);
   };
 
-  const handleSignOut: MouseEventHandler<HTMLDivElement> = () => {
+  const handleSignOut = () => {
     setIsUserProfileActive(false);
     dispatch(userActions.signOut());
   };
@@ -102,8 +97,8 @@ const PageLayout = (props: PageLayoutProps) => {
         {isUserProfileAcvite && (
           <Overlay>
             <CloseOverlay onClick={handleUserProfileActivation} />
-            <div className="text-white cursor-pointer" onClick={handleSignOut}>
-              User Profile
+            <div className="overlay-child">
+              <UserProfile onSignOutButtonClick={handleSignOut} />
             </div>
           </Overlay>
         )}
@@ -112,7 +107,7 @@ const PageLayout = (props: PageLayoutProps) => {
         {isAuthActive && (
           <Overlay>
             <CloseOverlay onClick={handleAuthActivation} />
-            <div className="h-[80%] flex justify-center items-center">
+            <div className="overlay-child">
               <Auth />
             </div>
           </Overlay>
@@ -122,7 +117,7 @@ const PageLayout = (props: PageLayoutProps) => {
         {isAddListingActive && (
           <Overlay>
             <CloseOverlay onClick={handleAddListingActivation} />
-            <div className="h-[80%] flex justify-center items-center">
+            <div className="overlay-child">
               <AddListing deactivateOverlay={handleAddListingActivation} />
             </div>
           </Overlay>

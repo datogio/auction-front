@@ -114,7 +114,7 @@ const AddListing = (props: AddListingProps) => {
   };
 
   return (
-    <motion.div {...authAnimation} className="space-y-5">
+    <motion.div {...authAnimation} className="space-y-5 ">
       <AuthTitle title="New Listing" />
       <form onSubmit={(event) => event.preventDefault()} className="form">
         <Input

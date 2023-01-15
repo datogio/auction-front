@@ -1,5 +1,30 @@
 import { API_URL, CLIENT_URL } from '../utils/urls';
 
+export const uploadUserImage = (
+  user: { token: string; id: string },
+  image: File
+) => {
+  return new Promise((resolve: (user: user.Model) => void, reject) => {
+    const headers = new Headers();
+    headers.set('Authorization', `Bearer ${user.token}`);
+    const formData = new FormData();
+    formData.append('userImage', image);
+    fetch(`${API_URL}/users/upload-image`, {
+      method: 'POST',
+      headers,
+      body: formData,
+    })
+      .then(async (resp) => {
+        if (!resp.ok) {
+          reject(resp);
+        }
+        const { data: user } = await resp.json();
+        resolve(user);
+      })
+      .catch((err) => reject(err));
+  });
+};
+
 export const createBid = (
   amount: number,
   bidder: user.Model,

@@ -10,6 +10,29 @@ import { RootState } from '.';
 import { SetStateAction } from 'react';
 import * as promptActions from './prompt';
 
+export const uploadUserImage = createAsyncThunk(
+  'user/uploadUserImage',
+  async (
+    { user, image }: { user: { token: string; id: string }; image: File },
+    { dispatch }
+  ) => {
+    api
+      .uploadUserImage(user, image)
+      .then((user) => {
+        dispatch(set(user));
+      })
+      .catch(() =>
+        dispatch(
+          promptActions.add({
+            id: Math.random(),
+            type: 'error',
+            message: 'Unable to upload image',
+          })
+        )
+      );
+  }
+);
+
 export const setUser = createAsyncThunk(
   'user/setUser',
   async ({}, { dispatch }) => {
@@ -42,7 +65,7 @@ export const signOut = createAsyncThunk(
           Router.push('/');
         }
       })
-      .catch((err) =>
+      .catch(() =>
         dispatch(
           promptActions.add({
             id: Math.random(),
