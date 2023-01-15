@@ -1,9 +1,10 @@
 import { MouseEventHandler, ReactNode } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaTimes } from 'react-icons/fa';
+import { BsCheckLg } from 'react-icons/bs';
 
 export interface ButtonProps {
   color: 'blue' | 'white';
-  icon: 'none' | 'add';
+  icon: 'none' | 'add' | 'yes' | 'no';
   value: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
@@ -12,6 +13,8 @@ export interface ButtonProps {
 const iconsMap: Record<ButtonProps['icon'], ReactNode> = {
   none: null,
   add: <FaPlus />,
+  yes: <BsCheckLg />,
+  no: <FaTimes className="text-2xl" />,
 };
 
 const colorsMap: Record<ButtonProps['color'], ReactNode> = {
