@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { useState, memo } from 'react';
+import { useState, memo, useRef } from 'react';
 import { TimeLeftTick } from '../../components';
 import { useInterval } from '../../hooks';
 
@@ -9,14 +9,17 @@ export interface TimeLeftProps {
 
 const TimeLeft = (props: TimeLeftProps) => {
   const [now, setNow] = useState(moment());
+  const end = useRef(moment(props.endDate));
 
-  useInterval(() => {
-    setNow(moment());
-  }, 1000);
+  useInterval(
+    () => {
+      setNow(moment());
+    },
+    end.current.diff(now, 'milliseconds') > 0 ? 1000 : null
+  );
 
   const millisecondsLeft = () => {
-    const end = moment(props.endDate);
-    const milliSeconds = end.diff(now, 'millisecond');
+    const milliSeconds = end.current.diff(now, 'millisecond');
     const millisecondsLeft = parseInt((milliSeconds / 1000000).toString());
     return millisecondsLeft;
   };
@@ -28,31 +31,27 @@ const TimeLeft = (props: TimeLeftProps) => {
   };
 
   const hoursLeft = () => {
-    const end = moment(props.endDate);
-    const hours = end.diff(now, 'hours');
+    const hours = end.current.diff(now, 'hours');
     return hours;
   };
 
   return (
     <div className="space-y-1 pt-1">
-      {millisecondsLeft() > 0 ? (
-        <div className="flex w-[86px] rounded overflow-hidden">
-          {[...Array(millisecondsLeft())].map((_, index) => (
+      <div className="flex w-[86px] rounded overflow-hidden">
+        {end.current.diff(now, 'milliseconds') > 0 &&
+          [...Array(millisecondsLeft())].map((_, index) => (
             <TimeLeftTick key={index} type="left" />
           ))}
-          {[...Array(millisecondsPassed())].map((_, index) => (
-            <TimeLeftTick key={index} type="passed" />
-          ))}
-        </div>
-      ) : (
-        <div className="flex w-[86px] rounded overflow-hidden">
-          {[...Array(parseInt((86400000 / 1000000).toString()))].map(
-            (_, index) => (
-              <TimeLeftTick key={index} type="passed" />
-            )
-          )}
-        </div>
-      )}
+        {[
+          ...Array(
+            end.current.diff(now, 'milliseconds') > 0
+              ? millisecondsPassed()
+              : parseInt((86400000 / 1000000).toString())
+          ),
+        ].map((_, index) => (
+          <TimeLeftTick key={index} type="passed" />
+        ))}
+      </div>
       <div className="text-xs text-gray-600">{hoursLeft()}hr left</div>
     </div>
   );
