@@ -1,6 +1,8 @@
 import { ChangeEventHandler, Dispatch, MouseEventHandler } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Input, Button, Avatar } from '../../components';
+import { motion } from 'framer-motion';
+import { authAnimation } from '../../utils/animation';
 import * as userActions from '../../store/user';
 
 interface UserProfileProps {
@@ -23,7 +25,10 @@ const UserProfile = (props: UserProfileProps) => {
   };
 
   return (
-    <div className="w-[94%] md:w-[30%] space-y-10 flex flex-col items-center">
+    <motion.div
+      {...authAnimation}
+      className="w-[94%] md:w-[30%] space-y-10 flex flex-col items-center"
+    >
       {user && (
         <Avatar
           firstName={user?.firstName}
@@ -52,7 +57,7 @@ const UserProfile = (props: UserProfileProps) => {
         value="Sign Out"
         onClick={props.onSignOutButtonClick}
       />
-    </div>
+    </motion.div>
   );
 };
 
